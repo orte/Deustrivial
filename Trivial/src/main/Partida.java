@@ -3,8 +3,10 @@ package main;
 public class Partida {
 	private int id_jug1;
 	private int id_jug2;
+	private int dado;
 	private Tablero tablero;
 	private Puntuacion puntuacion;
+	private boolean turno;
 	private boolean terminada;
 	
 	public Partida(int id_jug1, int id_jug2){
@@ -14,7 +16,7 @@ public class Partida {
 		this.puntuacion = new Puntuacion();
 		this.terminada = false;
 	}
-
+	
 	public int getId_jug1() {
 		return id_jug1;
 	}
@@ -29,6 +31,12 @@ public class Partida {
 
 	public void setId_jug2(int id_jug2) {
 		this.id_jug2 = id_jug2;
+	}
+	public int getDado(){
+		return this.dado;
+	}
+	public void setDado(int dado){
+		this.dado = dado;
 	}
 
 	public Tablero getTablero() {
@@ -53,6 +61,14 @@ public class Partida {
 
 	public void setTerminada(boolean terminada) {
 		this.terminada = terminada;
+	}
+
+	public boolean isTurno() {
+		return turno;
+	}
+
+	public void setTurno(boolean turno) {
+		this.turno = turno;
 	}
 	
 	

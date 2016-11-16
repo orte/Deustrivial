@@ -41,20 +41,20 @@ public class Tablero {
 		}
 		return categoria;
 	}
-	public void mover(int jug){
+	public void mover(int jug, int dado){
 		if (jug == 1){
-			if(getPos_y_jug1()==5){
-				setPos_y_jug1(0);
+			if(getPos_y_jug1()+dado>5){
+				setPos_y_jug1((getPos_y_jug1()+dado)-6);
 				setPos_x_jug1(getPos_x_jug1()+1);
 			} else{
-				setPos_y_jug1(getPos_y_jug1()+1);
+				setPos_y_jug1(getPos_y_jug1()+dado);
 			}
 		} else {
 			if(getPos_y_jug2()==5){
-				setPos_y_jug2(0);
+				setPos_y_jug2((getPos_y_jug2()+dado)-6);
 				setPos_x_jug2(getPos_x_jug2()+1);
 			} else{
-				setPos_y_jug2(getPos_y_jug2()+1);
+				setPos_y_jug2(getPos_y_jug2()+dado);
 			}
 		}
 	}
