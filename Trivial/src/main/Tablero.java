@@ -28,14 +28,7 @@ public class Tablero {
 		this.pos_x_jug2 = 0;
 		this.pos_y_jug2 = 0;
 	}
-	public static void main(String[] args){
-		Tablero tablero = new Tablero();
-		for (int i=0; i<6; i++){
-			for (int j=0; j<6; j++){
-				System.out.println("Posición: "+i+", "+j+" Categoría"+tablero.getCasillas()[i][j].getCategoria());
-			}
-		}
-	}
+	
 	public String obtenerCategoria(int cat){
 		String categoria = null;
 		switch(cat){
