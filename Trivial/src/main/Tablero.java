@@ -11,12 +11,14 @@ public class Tablero {
 		casillas = new Casilla[6][6];
 		for (int i = 0; i<6; i++){
 			for (int j = 0; j<6; j++){
-				String categoria = obtenerCategoria();
+				String categoria = "";
 				boolean quesito;
 				if(j==0){
 					quesito = true;
+					categoria = obtenerCategoria(i);
 				} else{
 					quesito = false;
+					categoria = obtenerCategoria(j);
 				}
 				casillas[i][j] = new Casilla(i, j, categoria, quesito);
 			}
@@ -26,9 +28,16 @@ public class Tablero {
 		this.pos_x_jug2 = 0;
 		this.pos_y_jug2 = 0;
 	}
-	public String obtenerCategoria(){
+	public static void main(String[] args){
+		Tablero tablero = new Tablero();
+		for (int i=0; i<6; i++){
+			for (int j=0; j<6; j++){
+				System.out.println("Posición: "+i+", "+j+" Categoría"+tablero.getCasillas()[i][j].getCategoria());
+			}
+		}
+	}
+	public String obtenerCategoria(int cat){
 		String categoria = null;
-		int cat = (int) (Math.random()*6);
 		switch(cat){
 		case 0: categoria = "Geografía"; break;
 		case 1: categoria = "Arte y Literatura"; break;
@@ -55,6 +64,12 @@ public class Tablero {
 				setPos_y_jug2(getPos_y_jug2()+1);
 			}
 		}
+	}
+	public Casilla[][] getCasillas(){
+		return casillas;
+	}
+	public void setCasillas(Casilla[][] casillas){
+		this.casillas = casillas;
 	}
 	public int getPos_x_jug1() {
 		return pos_x_jug1;
