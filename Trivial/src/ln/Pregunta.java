@@ -1,4 +1,4 @@
-package main;
+package ln;
 
 public class Pregunta {
 	private String categoria;

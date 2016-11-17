@@ -1,4 +1,4 @@
-package main;
+package ln;
 
 public class Partida {
 	private int id_jug1;

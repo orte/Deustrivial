@@ -1,4 +1,4 @@
-package main;
+package ln;
 
 public class Tablero {
 	private Casilla [][] casillas;
