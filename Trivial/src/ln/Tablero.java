@@ -58,6 +58,12 @@ public class Tablero {
 			}
 		}
 	}
+	public Pregunta preguntar(int jugador){
+		//Nos falta por determinar como vamos a obtener las preguntas
+		Pregunta pregunta = null;
+		return pregunta;
+	}
+	
 	public Casilla[][] getCasillas(){
 		return casillas;
 	}

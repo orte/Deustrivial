@@ -6,8 +6,8 @@ public class Estadisticas {
 	private int id_jugador;
 	private int partidas_jugadas;
 	private int partidas_ganadas;
-	private ArrayList<Integer> preguntas_realizadas = new ArrayList<Integer>();
-	private ArrayList<Integer> preguntas_acertadas = new ArrayList<Integer>();
+	private ArrayList<Pregunta> preguntas_realizadas = new ArrayList<Pregunta>();
+	private ArrayList<Pregunta> preguntas_acertadas = new ArrayList<Pregunta>();
 	
 	public Estadisticas(int id_jugador){
 		this.id_jugador = id_jugador;
@@ -39,19 +39,19 @@ public class Estadisticas {
 		this.partidas_ganadas = partidas_ganadas;
 	}
 
-	public ArrayList<Integer> getPreguntas_realizadas() {
+	public ArrayList<Pregunta> getPreguntas_realizadas() {
 		return preguntas_realizadas;
 	}
 
-	public void setPreguntas_realizadas(ArrayList<Integer> preguntas_realizadas) {
+	public void setPreguntas_realizadas(ArrayList<Pregunta> preguntas_realizadas) {
 		this.preguntas_realizadas = preguntas_realizadas;
 	}
 
-	public ArrayList<Integer> getPreguntas_acertadas() {
+	public ArrayList<Pregunta> getPreguntas_acertadas() {
 		return preguntas_acertadas;
 	}
 
-	public void setPreguntas_acertadas(ArrayList<Integer> preguntas_acertadas) {
+	public void setPreguntas_acertadas(ArrayList<Pregunta> preguntas_acertadas) {
 		this.preguntas_acertadas = preguntas_acertadas;
 	}
 	public void partidaGanada(){
