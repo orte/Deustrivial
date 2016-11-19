@@ -1,12 +1,16 @@
 package ln;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Pregunta {
 	private String categoria;
 	private String pregunta;
-	private String [] respuestas;
-	private int correcta;
+	private ArrayList<String> respuestas;
+	private String correcta;
 	
-	public Pregunta(String categoria, String pregunta, String[] respuestas, int correcta){
+	public Pregunta(String categoria, String pregunta, ArrayList<String>respuestas, String correcta){
+		
 		this.categoria = categoria;
 		this.pregunta = pregunta;
 		this.respuestas = respuestas;
@@ -14,12 +18,34 @@ public class Pregunta {
 		
 	}
 	
+	@Override
+	public String toString() 
+	{
+		String p = this.getPregunta() + "de la categoria " + this.getCategoria() + " tiene las siguientes respuestas posibles :";
+		String p3= " ";
+		ArrayList<String> resp = new ArrayList<String>();
+		resp=this.getRespuestas();
+		
+		for(String a : resp)
+		{
+		p3=p3+a+" ";	
+		}
+		String p_= this.getCorrecta(); 
+		String p_2= " y la correcta es " + this.getCorrecta();
+		 
+		String pp= p+ p3+ p_+p_2;
+		
+		
+		return pp;
+		
+	}
+
 	public Pregunta ()
 	{
 		
 	}
 	
-	public boolean esCorrecto(int respuesta){
+	public boolean esCorrecto(String respuesta){
 		if(respuesta == correcta){
 			return true;
 		} else {
@@ -43,19 +69,19 @@ public class Pregunta {
 		this.pregunta = pregunta;
 	}
 
-	public String[] getRespuestas() {
+	public ArrayList<String> getRespuestas() {
 		return respuestas;
 	}
 
-	public void setRespuestas(String[] respuestas) {
+	public void setRespuestas(ArrayList<String> respuestas) {
 		this.respuestas = respuestas;
 	}
 
-	public int getCorrecta() {
+	public String getCorrecta() {
 		return correcta;
 	}
 
-	public void setCorrecta(int correcta) {
+	public void setCorrecta(String correcta) {
 		this.correcta = correcta;
 	}
 	
