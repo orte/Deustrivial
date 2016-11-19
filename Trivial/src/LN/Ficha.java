@@ -1,4 +1,4 @@
-package ln;
+package LN;
 
 public class Ficha {
 

@@ -1,4 +1,4 @@
-package ln;
+package LN;
 
 public class Puntuacion {
 	private int acertadas_jug1;

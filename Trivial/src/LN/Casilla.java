@@ -1,4 +1,4 @@
-package ln;
+package LN;
 
 public class Casilla {
 	private int posicion_x;
