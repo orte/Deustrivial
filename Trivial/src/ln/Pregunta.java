@@ -14,6 +14,11 @@ public class Pregunta {
 		
 	}
 	
+	public Pregunta ()
+	{
+		
+	}
+	
 	public boolean esCorrecto(int respuesta){
 		if(respuesta == correcta){
 			return true;
