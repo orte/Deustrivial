@@ -1,12 +1,15 @@
 package LD;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.jdom2.*;
 import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 
 import LN.Pregunta;
 
@@ -122,7 +125,31 @@ public class GestorXML
         
     
         }
-    public void escribirEnXMLPreguntas(){}    
+    public void escribirEnXMLJugadores(int ultimo_id, String nombre_J) throws JDOMException, IOException
+    {
+    	
+    	 SAXBuilder builder = new SAXBuilder();
+		  File xmlFile = new File( "Jugadores.xml" ); // Nombre de nuestro archivo
+		  Document document = (Document) builder.build(xmlFile);
+		  Element Jugadores = new Element("Jugadores");
+		  Jugadores = document.getRootElement();
+		  
+		  String nuevo_id=String.valueOf(ultimo_id+1);
+	 
+	      Element nuevo_J = new Element("jugador");
+	      nuevo_J.setAttribute(new Attribute("id_j",nuevo_id));
+	      nuevo_J.addContent(new Element ("Nombre").setText(nombre_J));
+	      
+	      Jugadores.addContent(nuevo_J);
+	    
+	  	// new XMLOutputter().output(doc, System.out);
+		XMLOutputter xmlOutput = new XMLOutputter();
+	 
+			// display nice nice
+			xmlOutput.setFormat(Format.getPrettyFormat());
+			xmlOutput.output(document, new FileWriter("Jugadores.xml"));
+	 
+    }    
         
 	
 	}
