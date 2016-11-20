@@ -1,7 +1,6 @@
 package LN;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Pregunta {
 	private String categoria;
