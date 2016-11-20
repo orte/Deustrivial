@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="lib/jdom-2.0.6-junit.jar"/>
 	<classpathentry kind="lib" path="lib/jdom-2.0.6-sources.jar"/>
 	<classpathentry kind="lib" path="lib/jdom-2.0.6.jar"/>
+	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.15.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
