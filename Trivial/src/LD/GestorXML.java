@@ -125,7 +125,15 @@ public class GestorXML
         
     
         }
-    public void escribirEnXMLJugadores(int ultimo_id, String nombre_J) throws JDOMException, IOException
+	
+	public void SacarPregunta ()
+	{
+		
+	}
+	
+	
+	
+	public void escribirEnXMLJugadores(int ultimo_id, String nombre_J) throws JDOMException, IOException
     {
     	
     	 SAXBuilder builder = new SAXBuilder();

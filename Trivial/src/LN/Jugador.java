@@ -6,12 +6,25 @@ public class Jugador {
 	private String nombre_usuario;
 	private Estadisticas estadisticas;
 	
-	public Jugador (int id, String nombre_usuario){
+	public Jugador (int id, String nombre_usuario)
+	{
 		this.id = id;
 		this.nombre_usuario = nombre_usuario;
 		estadisticas = new Estadisticas(id);
 	}
 
+	
+	public void EvaluarRespuesta(String respuesta_dada, String respuesta_correcta)
+	{
+		
+		if (respuesta_dada.equals(respuesta_correcta))
+		{
+			
+		}
+	}
+	
+	
+	
 	public int getId() {
 		return id;
 	}
