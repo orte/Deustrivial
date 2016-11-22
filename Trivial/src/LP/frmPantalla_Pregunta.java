@@ -21,6 +21,9 @@ import javax.swing.JTextArea;
 import java.awt.Font;
 
 
+import javax.swing.JLabel;
+
+
 public class frmPantalla_Pregunta extends JFrame implements ActionListener
 {
 
@@ -153,21 +156,25 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		
 		
 		btn_R1 = new JButton(opcion1);
+		btn_R1.setFont(new Font("Arial", Font.PLAIN, 21));
 		btn_R1.addActionListener(this);
 		btn_R1.setActionCommand(comando_R1);
 		panel_1.add(btn_R1);
 		
 		btn_R2 = new JButton(opcion2);
+		btn_R2.setFont(new Font("Arial", Font.PLAIN, 21));
 		btn_R2.addActionListener(this);
 		btn_R2.setActionCommand(comando_R2);
 		panel_1.add(btn_R2);
 		
 		btn_R3 = new JButton(opcion3);
+		btn_R3.setFont(new Font("Arial", Font.PLAIN, 21));
 		btn_R3.addActionListener(this);
 		btn_R3.setActionCommand(comando_R3);
 		panel_1.add(btn_R3);
 		
 		btn_R4 = new JButton(opcion4);
+		btn_R4.setFont(new Font("Arial", Font.PLAIN, 21));
 		btn_R2.addActionListener(this);
 		btn_R4.setActionCommand(comando_R4);
 		panel_1.add(btn_R4);
@@ -175,9 +182,15 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		textArea = new JTextArea();
 		textArea.setFont(new Font("Arial", Font.PLAIN,20));
 		textArea.setEditable(false);
-		textArea.setBounds(0, 0, 451, 170);
+		textArea.setBounds(0, 29, 451, 141);
+		textArea.setLineWrap(true); // Para que el texto se divida en lineas
 		textArea.setText(p.getPregunta());
 		panel.add(textArea);
+		
+		JLabel lblPregunta = new JLabel("PREGUNTA");
+		lblPregunta.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblPregunta.setBounds(168, 0, 114, 20);
+		panel.add(lblPregunta);
 	}
 
 	public void actionPerformed(ActionEvent e) 
@@ -189,10 +202,10 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		
 		switch(c)
 		{
-		case comando_R1: respuesta = btn_R1.getText() ;
-		case comando_R2: respuesta = btn_R2.getText();
-		case comando_R3: respuesta = btn_R3.getText();
-		case comando_R4:respuesta = btn_R4.getText() ;
+		case comando_R1: respuesta = btn_R1.getText() ; if(respuesta.equals(correcta)){btn_R1.setBackground(java.awt.Color.green);} else {btn_R1.setBackground(java.awt.Color.red);};break;
+		case comando_R2: respuesta = btn_R2.getText();if(respuesta.equals(correcta)){btn_R2.setBackground(java.awt.Color.green);}else {btn_R2.setBackground(java.awt.Color.red);};break;
+		case comando_R3: respuesta = btn_R3.getText();if(respuesta.equals(correcta)){btn_R3.setBackground(java.awt.Color.green);}else {btn_R3.setBackground(java.awt.Color.red);};break;
+		case comando_R4: respuesta = btn_R4.getText() ;if(respuesta.equals(correcta)){btn_R4.setBackground(java.awt.Color.green);} else {btn_R4.setBackground(java.awt.Color.red);};break;
 		
 		}
 		
