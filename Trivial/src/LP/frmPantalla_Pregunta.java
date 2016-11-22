@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -112,17 +113,39 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		pregunta= p.getPregunta();
 		
 		correcta = p.getCorrecta();
+		
 		lista_R=p.getRespuestas();
+		lista_R.add(correcta);
 		
-		
-		for(int i =0; i< lista_R.size()-1;i++)
-		{
-		//Saca aleatoriamente una respuesta del array y la coloca en un boton
-		//Despues lo elimina del array para que no salga dos veces la misma
-		}
+		String aux= " ";
 		
 		
 		
+		int pos=0;
+		
+		//Como la lista de respuestas siempre va aser size 4
+		//Y no sabria hacer que con un bucle se fuesen sacan respuestas y
+		//metiendolas en el texto de cada boton aleatoriamente, lo haremos repitiendo codigo.
+			
+			pos=(int) (Math.random()*(lista_R.size()-1)+1);
+			aux=lista_R.get(pos);
+			lista_R.remove(pos);
+			opcion1=aux;
+			
+			pos=(int) (Math.random()*(lista_R.size()-1)+1);
+			aux=lista_R.get(pos);
+			lista_R.remove(pos);
+			opcion2=aux;
+			
+			pos=(int) (Math.random()*(lista_R.size()-1)+1);
+			aux=lista_R.get(pos);
+			lista_R.remove(pos);
+			opcion3=aux;
+			
+			pos=0;
+			aux=lista_R.get(pos);
+			lista_R.remove(pos);
+			opcion4=aux;
 		
 	}
 	public void CreateAndShow()
@@ -131,7 +154,6 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		
 		btn_R1 = new JButton(opcion1);
 		btn_R1.addActionListener(this);
-		
 		btn_R1.setActionCommand(comando_R1);
 		panel_1.add(btn_R1);
 		
