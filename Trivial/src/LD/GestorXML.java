@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
 
 import org.jdom2.*;
 import org.jdom2.input.SAXBuilder;
@@ -164,12 +164,12 @@ public class GestorXML
 	             {
 	           		
 	           		Element element_R = (Element) lista_R.get(j); 
-	           		if(element_R.getAttributeValue("tipo").equals("T")) //Si es T pasa al atributo String Correcta
+	           		if(element_R.getAttributeValue("tipo").equals("true")) //Si es T pasa al atributo String Correcta
 	           		{
 	           			pregunta.setCorrecta(element_R.getText());
 	           		}
 	           		
-	           		if(element_R.getAttributeValue("tipo").equals("F"))
+	           		if(element_R.getAttributeValue("tipo").equals("false"))
 	           		{
 	           			
 	           			resp_aux.add(element_R.getText());
