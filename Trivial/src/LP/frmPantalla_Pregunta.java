@@ -200,6 +200,7 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		String c = e.getActionCommand();
 		String respuesta = " ";
 		
+		
 		switch(c)
 		{
 		case comando_R1: respuesta = btn_R1.getText() ; if(respuesta.equals(correcta)){btn_R1.setBackground(java.awt.Color.green);} else {btn_R1.setBackground(java.awt.Color.red);};break;
