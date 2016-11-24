@@ -13,15 +13,12 @@ public class Jugador {
 		estadisticas = new Estadisticas(id);
 	}
 
-	
-	public void EvaluarRespuesta(String respuesta_dada, String respuesta_correcta)
+	public Jugador()
 	{
 		
-		if (respuesta_dada.equals(respuesta_correcta))
-		{
-			
-		}
 	}
+	
+	
 	
 	
 	
