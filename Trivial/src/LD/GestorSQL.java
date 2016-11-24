@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import LN.Jugador;
 public class GestorSQL 
 {
-	public static Connection ConectarA (String ruta)
+	public Connection ConectarA (String ruta)
 	{
 		// Cargamos el driver
 		try 
@@ -23,7 +23,7 @@ public class GestorSQL
 		 try 
 		 {
 			 conec = DriverManager.getConnection("jdbc:sqlite:"+ ruta );
-			 System.out.println("Conexión realizada correctamente - Ruta de base de datos: " + ruta);
+			 System.out.println("Conexiï¿½n realizada correctamente - Ruta de base de datos: " + ruta);
 		 }
 		 
 		 catch (SQLException e)
@@ -35,9 +35,9 @@ public class GestorSQL
 	
 	}
 	
-	public static ArrayList<Jugador> MostrarJugadores()  
+	public ArrayList<Jugador> MostrarJugadores()  
 	{
-		Connection conn = GestorSQL.ConectarA("data/Trivial.db"); //Nos conectamos a la BD
+		Connection conn = ConectarA("data/Trivial.db"); //Nos conectamos a la BD
 		Statement stmt = null;
 	
 		try {
@@ -108,17 +108,39 @@ public class GestorSQL
 		
 	}
 	
-	public static void GuardarJugadorYEstadistica (String nombre)
+	public void GuardarJugadorYEstadistica (String nombre)
 	
 	{
 			//Solo recibidmos por parametro el nombre porque las estadisticas 
 			// no tienen ningun otro atributo libre y los ID_J e ID_E se generan 
 			// de fiorma mecanica +1.
 	}
-	public static void SacarPreguntas() throws SQLException
+	public void SacarPreguntas() throws SQLException
 	{
 		
 
+	}
+	public void guardarJugador(Jugador jug){
+		Connection conn = ConectarA("data/Trivial.db"); //Nos conectamos a la BD
+		Statement stmt = null;
+	
+		try {
+			stmt = conn.createStatement();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		String sentencia = "INSERT INTO JUGADOR" + "VALUES("+jug.getId()+", "+jug.getNombre_usuario()+");";
+		ResultSet rs = null;
+		
+		try {
+			rs = stmt.executeQuery(sentencia);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 	}
 
 }

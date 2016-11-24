@@ -34,7 +34,7 @@ public class Partida
 		
 	}
 	public void comienzo(){
-		int sorteo = (int)(Math.random()*2+1);
+		int sorteo = (int)(Math.random());
 		System.out.println(sorteo);
 		if(sorteo == 0)
 		{
@@ -48,6 +48,10 @@ public class Partida
 		tablero.setPos_y_jug1(0);
 		tablero.setPos_x_jug2(0);
 		tablero.setPos_y_jug2(0);
+	}
+	public void tirarDado(){
+		int nuevoDado = (int) (Math.random()*6+1);
+		setDado(nuevoDado);
 	}
 	
 	
