@@ -4,13 +4,13 @@ public class Jugador {
 	
 	private int id;
 	private String nombre_usuario;
-	private Estadisticas estadisticas;
+	//private Estadisticas estadisticas;
 	
 	public Jugador (int id, String nombre_usuario)
 	{
 		this.id = id;
 		this.nombre_usuario = nombre_usuario;
-		estadisticas = new Estadisticas(id);
+		//estadisticas = new Estadisticas(id);
 	}
 
 	public Jugador()
@@ -38,13 +38,13 @@ public class Jugador {
 		this.nombre_usuario = nombre_usuario;
 	}
 
-	public Estadisticas getEstadisticas() {
-		return estadisticas;
-	}
+	//public Estadisticas getEstadisticas() {
+	//	return estadisticas;
+	//}
 
-	public void setEstadisticas(Estadisticas estadisticas) {
-		this.estadisticas = estadisticas;
-	}
+	//public void setEstadisticas(Estadisticas estadisticas) {
+		//this.estadisticas = estadisticas;
+	//}
 	
 
 }

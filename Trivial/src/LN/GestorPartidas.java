@@ -17,8 +17,12 @@ public class GestorPartidas
 		super();
 	}
 	
-	public void CrearPartida(String id1, String id2)
-	{
+	public void CrearPartida(int id1, int id2)
+	{	
+		Partida nueva_P = new Partida(id1,id2);
+		FichaDePartida F1 = new FichaDePartida(id1);
+		FichaDePartida F2 = new FichaDePartida(id2);
+		
 		
 		
 	}

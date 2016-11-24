@@ -6,13 +6,15 @@ public class Estadisticas {
 	private int id_jugador;
 	private int partidas_jugadas;
 	private int partidas_ganadas;
-	private ArrayList<Pregunta> preguntas_realizadas = new ArrayList<Pregunta>();
-	private ArrayList<Pregunta> preguntas_acertadas = new ArrayList<Pregunta>();
+	private int preguntas_acertadas;
+	private int preguntas_falladas;
 	
 	public Estadisticas(int id_jugador){
 		this.id_jugador = id_jugador;
-		partidas_jugadas = 0;
-		partidas_ganadas = 0;
+		this.partidas_jugadas = 0;
+		this.partidas_ganadas = 0;
+		this.preguntas_acertadas=0;
+		this.preguntas_falladas=0;
 	}
 
 	public int getId_jugador() {
@@ -39,27 +41,29 @@ public class Estadisticas {
 		this.partidas_ganadas = partidas_ganadas;
 	}
 
-	public ArrayList<Pregunta> getPreguntas_realizadas() {
-		return preguntas_realizadas;
-	}
-
-	public void setPreguntas_realizadas(ArrayList<Pregunta> preguntas_realizadas) {
-		this.preguntas_realizadas = preguntas_realizadas;
-	}
-
-	public ArrayList<Pregunta> getPreguntas_acertadas() {
-		return preguntas_acertadas;
-	}
-
-	public void setPreguntas_acertadas(ArrayList<Pregunta> preguntas_acertadas) {
-		this.preguntas_acertadas = preguntas_acertadas;
-	}
+	
 	public void partidaGanada(){
 		setPartidas_jugadas(getPartidas_jugadas()+1);
 		setPartidas_ganadas(getPartidas_ganadas()+1);
 	}
 	public void partidaPerdida(){
 		setPartidas_jugadas(getPartidas_jugadas()+1);
+	}
+
+	public int getPreguntas_acertadas() {
+		return preguntas_acertadas;
+	}
+
+	public void setPreguntas_acertadas(int preguntas_acertadas) {
+		this.preguntas_acertadas = preguntas_acertadas;
+	}
+
+	public int getPreguntas_falladas() {
+		return preguntas_falladas;
+	}
+
+	public void setPreguntas_falladas(int preguntas_falladas) {
+		this.preguntas_falladas = preguntas_falladas;
 	}
 	
 	

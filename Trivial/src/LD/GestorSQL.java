@@ -113,7 +113,7 @@ public class GestorSQL
 	{
 			//Solo recibidmos por parametro el nombre porque las estadisticas 
 			// no tienen ningun otro atributo libre y los ID_J e ID_E se generan 
-		// de fiorma mecanica +1.
+			// de fiorma mecanica +1.
 	}
 	public static void SacarPreguntas() throws SQLException
 	{

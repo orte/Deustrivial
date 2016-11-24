@@ -8,7 +8,8 @@ public class FichaDePartida {
 	private int preguntas_realizadas;
 	private int preguntas_acertadas;
 	
-	public FichaDePartida(int id_jugador){
+	public FichaDePartida(int id_jugador)
+	{
 		this.id_jugador = id_jugador;
 		this.num_quesitos = 0;
 		this.preguntas_realizadas = 0;

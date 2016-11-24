@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import LD.GestorSQL;
+import LN.GestorPartidas;
 import LN.Jugador;
 
 import javax.swing.JSpinner;
@@ -163,6 +164,10 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 		{
 			FrameTablero tablero= new FrameTablero();
 			tablero.setVisible(true);
+			
+			GestorPartidas gestorP= new GestorPartidas();
+			
+		//	gestorP.CrearPartida(id1, id2);
 			
 			//CrearClasePartida y Guardarla en fichero
 		}
