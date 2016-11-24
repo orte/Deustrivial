@@ -50,4 +50,12 @@ public class GestorSQL
 		rs.close();
 
 	}
+	
+	public static void GuardarJugadorYEstadistica (String nombre)
+	
+	{
+			//Solo recibidmos por parametro el nombre porque las estadisticas 
+			// no tienen ningun otro atributo libre y los ID_J e ID_E se generan 
+		// de fiorma mecanica +1.
+	}
 }
