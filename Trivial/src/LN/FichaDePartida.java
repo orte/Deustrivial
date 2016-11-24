@@ -3,6 +3,7 @@ package LN;
 public class FichaDePartida {
 
 	private int id_jugador;
+	private int id_partida;
 	private int num_quesitos;
 	private int preguntas_realizadas;
 	private int preguntas_acertadas;
@@ -37,6 +38,14 @@ public class FichaDePartida {
 	}
 	public void setPreguntas_acertadas(int preguntas_acertadas) {
 		this.preguntas_acertadas = preguntas_acertadas;
+	}
+
+	public int getId_partida() {
+		return id_partida;
+	}
+
+	public void setId_partida(int id_partida) {
+		this.id_partida = id_partida;
 	}
 	
 	

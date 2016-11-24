@@ -1,5 +1,6 @@
 package LP;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -23,7 +24,11 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 
-
+/**
+ * 
+ * @author Josune
+ *
+ */
 public class frmPantalla_Pregunta extends JFrame implements ActionListener
 {
 
@@ -53,7 +58,7 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 	 ArrayList<String> lista_R; // Las respuestas posibles sacadas de fichero vienen aqui
 	 String pregunta ; // el texto de la pregunta viene aqui
 	 String correcta; 
-	 String categoria = " Ocio ";//Esto tenemos que conocerlo de antees 
+	 String categoria = " ";//Esto tenemos que conocerlo de antees 
 	// AL crear la ventana la podemos pasar por parametro y en la primera linea
 	 //del constructor meterla en este String
 	 
@@ -64,7 +69,7 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) 
+	/**public static void main(String[] args) 
 	{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -76,16 +81,16 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 				}
 			}
 		});
-	}
+	}**/
 
 	/**
 	 * Create the frame.
 	 * @throws IOException 
 	 * @throws JDOMException 
 	 */
-	public frmPantalla_Pregunta() throws JDOMException, IOException 
+	public frmPantalla_Pregunta(String Cat) throws JDOMException, IOException 
 	{
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 507, 505);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -103,6 +108,8 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		panel_1.setBounds(17, 206, 451, 222);
 		contentPane.add(panel_1);
 		panel_1.setLayout(new GridLayout(4, 4, 0, 0));
+		
+		categoria=Cat;
 		
 		CargarDatos();
 		CreateAndShow();
@@ -199,14 +206,83 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		
 		String c = e.getActionCommand();
 		String respuesta = " ";
-		
+		String r1=" ";
+		String r2=" ";
+		String r3=" ";
 		
 		switch(c)
 		{
-		case comando_R1: respuesta = btn_R1.getText() ; if(respuesta.equals(correcta)){btn_R1.setBackground(java.awt.Color.green);} else {btn_R1.setBackground(java.awt.Color.red);};break;
-		case comando_R2: respuesta = btn_R2.getText();if(respuesta.equals(correcta)){btn_R2.setBackground(java.awt.Color.green);}else {btn_R2.setBackground(java.awt.Color.red);};break;
-		case comando_R3: respuesta = btn_R3.getText();if(respuesta.equals(correcta)){btn_R3.setBackground(java.awt.Color.green);}else {btn_R3.setBackground(java.awt.Color.red);};break;
-		case comando_R4: respuesta = btn_R4.getText() ;if(respuesta.equals(correcta)){btn_R4.setBackground(java.awt.Color.green);} else {btn_R4.setBackground(java.awt.Color.red);};break;
+		case comando_R1: respuesta = btn_R1.getText() ;
+					if(respuesta.equals(correcta))
+					{
+						btn_R1.setBackground(java.awt.Color.green);
+						//Metodo jugador.sumarRespuestaAcertada(); -> lo suma a sus estadisticas
+						//Metodo FichaJugador+ quesito? + turno?
+					}
+					else
+					{
+						btn_R1.setBackground(java.awt.Color.red);
+						if(btn_R2.getText().equals(correcta))
+						{
+							btn_R2.setBackground(Color.green);
+						}
+						else if (btn_R3.getText().equals(correcta))
+						{
+							btn_R3.setBackground(Color.green);
+						}
+						else btn_R4.setBackground(Color.green);
+						
+					};break;
+		case comando_R2: respuesta = btn_R2.getText();
+					if(respuesta.equals(correcta))
+					{btn_R2.setBackground(java.awt.Color.green);}
+					else
+					{
+						btn_R2.setBackground(java.awt.Color.red);
+						if(btn_R1.getText().equals(correcta))
+						{
+							btn_R1.setBackground(Color.green);
+						}
+						else if (btn_R3.getText().equals(correcta))
+						{
+							btn_R3.setBackground(Color.green);
+						}
+						else btn_R4.setBackground(Color.green);
+					};break;
+		case comando_R3: respuesta = btn_R3.getText();
+					if(respuesta.equals(correcta))
+					{btn_R3.setBackground(java.awt.Color.green);}
+					else 
+					{
+						btn_R3.setBackground(java.awt.Color.red);
+						if(btn_R1.getText().equals(correcta))
+						{
+							btn_R1.setBackground(Color.green);
+						}
+						else if (btn_R2.getText().equals(correcta))
+						{
+							btn_R2.setBackground(Color.green);
+						}
+						else btn_R4.setBackground(Color.green);
+					
+					};break;
+		case comando_R4: respuesta = btn_R4.getText();
+					if(respuesta.equals(correcta))
+					{btn_R4.setBackground(java.awt.Color.green);} 
+					else 
+					{
+						btn_R4.setBackground(java.awt.Color.red);
+						if(btn_R1.getText().equals(correcta))
+						{
+							btn_R1.setBackground(Color.green);
+						}
+						else if (btn_R3.getText().equals(correcta))
+						{
+							btn_R3.setBackground(Color.green);
+						}
+						else btn_R2.setBackground(Color.green);
+					
+					};break;
 		
 		}
 		

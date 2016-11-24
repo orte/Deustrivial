@@ -1,5 +1,6 @@
 package LD;
 import java.sql.*;
+import java.util.ArrayList;
 public class GestorSQL 
 {
 	public static Connection ConectarA (String ruta)
@@ -34,7 +35,7 @@ public class GestorSQL
 	
 	public static void MostrarJugadores() throws SQLException
 	{
-		Connection conn = GestorSQL.ConectarA("Trivial.db"); //Nos conectamos a la BD
+		Connection conn = GestorSQL.ConectarA("data/Trivial.db"); //Nos conectamos a la BD
 		Statement stmt = conn.createStatement();
 		
 		String sentencia= "SELECT * FROM JUGADOR";
@@ -58,4 +59,10 @@ public class GestorSQL
 			// no tienen ningun otro atributo libre y los ID_J e ID_E se generan 
 		// de fiorma mecanica +1.
 	}
+	public static void SacarPreguntas() throws SQLException
+	{
+		
+
+	}
+
 }

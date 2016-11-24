@@ -29,7 +29,7 @@ public class GestorXML
 	    //Se crea un SAXBuilder para poder parsear el archivo
 		
 	    SAXBuilder builder = new SAXBuilder();
-	    File xmlFile = new File( "Preguntas.xml" ); // Nombre de nuestro archivo
+	    File xmlFile = new File( "data/Preguntas.xml" ); // Nombre de nuestro archivo
 	   
 	    Document document = (Document) builder.build(xmlFile);
         // Se obtiene el elemento raiz
@@ -130,7 +130,7 @@ public class GestorXML
 	public Pregunta SacarPregunta (String categoria) throws JDOMException, IOException
 	{
 		  SAXBuilder builder = new SAXBuilder();
-		    File xmlFile = new File( "Preguntas.xml" ); // Nombre de nuestro archivo
+		    File xmlFile = new File( "data/Preguntas.xml" ); // Nombre de nuestro archivo
 		   
 		    Document document = (Document) builder.build(xmlFile);
 	        // Se obtiene el elemento raiz
@@ -177,32 +177,20 @@ public class GestorXML
 	           		}
 	           		
 	           	
-	           		
 	           	}
 	           	
-	           	
 	           pregunta.setCategoria(element.getChildText("C")); //Lo mismo que con el texto de la pregunta
-	      
-	            
-	            
-	            
-	         
-	            Array_P_aux.add(pregunta);
-	            
-	            Array_P=Array_P_aux;
+	           Array_P_aux.add(pregunta);
+	           Array_P=Array_P_aux;
 	          }
 	           
 	        
-	     
 	       }
-	           
 	           
 	           //Elegir aleatoriamente una pregunta del array_P
 	           
-	          int posAleatoria= (int)(Math.random()*(Array_P.size()-1) + 1);
-
+	          int posAleatoria= (int)(Math.random()*(Array_P.size()-1) + 0);
 	           Pregunta p=Array_P.get(posAleatoria);// en lugar de object pones el tipo de dato que maneja tu array 
-	           
 	           return p;
 	        
 	}
@@ -213,7 +201,7 @@ public class GestorXML
     {
     	
     	 SAXBuilder builder = new SAXBuilder();
-		  File xmlFile = new File( "Jugadores.xml" ); // Nombre de nuestro archivo
+		  File xmlFile = new File( "data/Jugadores.xml" ); // Nombre de nuestro archivo
 		  Document document = (Document) builder.build(xmlFile);
 		  Element Jugadores = new Element("Jugadores");
 		  Jugadores = document.getRootElement();
@@ -231,7 +219,7 @@ public class GestorXML
 	 
 			// display nice nice
 			xmlOutput.setFormat(Format.getPrettyFormat());
-			xmlOutput.output(document, new FileWriter("Jugadores.xml"));
+			xmlOutput.output(document, new FileWriter("data/Jugadores.xml"));
 	 
     }    
         

@@ -28,6 +28,8 @@ public class Main {
 		//String sentencia =" INSERT INTO JUGADOR (ID_J, NOMBRE_J)VALUES('00001','JOSUNE')";
 		//stmt.executeUpdate(sentencia);
 		
+		
+		
 /**String sentencia= "SELECT * FROM JUGADOR";
 	
 	ResultSet rs = stmt.executeQuery(sentencia);
@@ -42,6 +44,7 @@ public class Main {
 	
 	**/
 
+		
 		
 	}
 

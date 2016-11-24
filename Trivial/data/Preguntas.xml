@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<Preguntas>
+
+    <pregunta>
+      <P>¿De qué color era la capa de Superman?</P>
+     <R tipo="true">Rojo</R> 
+     <R tipo="false">Negro</R> 
+     <R tipo="false">Azul</R>
+     <R tipo="false">Blanco</R>
+     <C> Ocio </C>
+     </pregunta>
+
+    <pregunta>
+     <P>¿En qué año llego el hombre a la luna?</P>
+     <R tipo="false">1900</R>
+     <R tipo="false">1869</R>
+     <R tipo="true">1969</R>
+     <R tipo="false">1989</R>
+     <C> Historia </C>
+
+    </pregunta>
+    
+     <pregunta>
+      <P>¿Como se llaman las celulas  presentes en la sangre y otros tejidos animales capaces de captar microorganismos y restos celulares  e introducirlos en su interior con el fin de eliminarlos?</P>
+     <R tipo="false">Encimas</R>
+     <R tipo="false">Plaquetas</R>
+     <R tipo="true">Fagocitos</R> 
+     <R tipo="false">Peroxisomas</R> 
+    
+     
+     <C> Ciencia </C>
+     </pregunta>
+
+    <pregunta>
+     <P>¿Cuantas branquias tiene en cada lado un tiburón?</P>
+     <R tipo="false">1</R>
+     <R tipo="false">2</R>
+     <R tipo="true">5-7</R>
+     <R tipo="false">3-4</R>
+     <C> Ciencia </C>
+
+    </pregunta>
+    
+    
+     <pregunta>
+      <P>¿Quien es el mejor amigo de Harry Potter?</P>
+     <R tipo="true">Ron Weasley</R> 
+     <R tipo="false">Draco Malfoy</R> 
+     <R tipo="false">Neville Longbotton</R>
+     <R tipo="false">Voldemort</R>
+     <C> Ocio </C>
+     </pregunta>
+     
+       <pregunta>
+      <P>¿Cual es la profesión de Mario (Mario Bros)?</P>
+     <R tipo="true">Fontanero</R> 
+     <R tipo="false">Bombero</R> 
+     <R tipo="false">Ladron de bancos</R>
+     <R tipo="false">Samurai</R>
+     <C> Ocio </C>
+     </pregunta>
+     
+     <pregunta>
+     <P>¿Cuanl es el oficio de Leonard en The Big Bang Theory?</P>
+     <R tipo="false">Ingeniero espacial</R>
+     <R tipo="false">Matematico</R>
+     <R tipo="true">Fisico Experimental</R>
+     <R tipo="false">Quimico</R>
+     <C> Ocio </C>
+
+    </pregunta>
+    
+       <pregunta>
+      <P>¿Donde pasan 3 meses Leonard, Sheldon, Howard y Rajesh (TheBigBangTheory)?</P>
+     <R tipo="true">El polo norte</R> 
+     <R tipo="false">Brasil</R> 
+     <R tipo="false">España</R>
+     <R tipo="false">Alaska</R>
+     <C> Ocio </C>
+     </pregunta>
+    
+    
+    
+
+   </Preguntas>
