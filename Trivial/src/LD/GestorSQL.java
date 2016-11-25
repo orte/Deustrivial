@@ -273,8 +273,30 @@ public void GuardarPartida (Partida par, FichaDePartida p1, FichaDePartida p2)
 		e.printStackTrace();
 	}
 
+	sentencia = "INSERT INTO FICHA_PARTIDA VALUES (  "+ p1.getId_jugador()+", "+p1.getId_partida()+", "+p1.getNum_quesitos()+", "+p1.getPreguntas_realizadas()+", "+p1.getPreguntas_acertadas()+" );";
+	try {
+		stmt.executeUpdate(sentencia);
+		System.out.println("Ficha1 guardada!");
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	
-	//Falta seguir con las Fichas
+	sentencia = "INSERT INTO FICHA_PARTIDA VALUES (  "+ p2.getId_jugador()+", "+p2.getId_partida()+", "+p2.getNum_quesitos()+", "+p2.getPreguntas_realizadas()+", "+p2.getPreguntas_acertadas()+" );";
+	try {
+		stmt.executeUpdate(sentencia);
+		System.out.println("Ficha2 guardada!");
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	try {
+		conn.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 }
 
 }

@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import LD.GestorSQL;
 import LN.GestorPartidas;
 import LN.Jugador;
+import LN.Partida;
 
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;
@@ -42,6 +43,7 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 	JButton btnNewButton;
 	
 	ArrayList<Jugador>lista_jugadores;
+	ArrayList<Partida>lista_partidas;
 	ArrayList<String> nombres ;
 	
 	final String comando_E= "E";
@@ -146,13 +148,22 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 			
 		}
 		
+		lista_partidas=gestorS.MostrarPartidas();
+		
+		
 		
 		
 	}
 
 	public void CrearPartida()
 	{
+		
+		//Comprobar que no es el mismo jugador en los dos campos 
 		boolean comprobacion=false;
+		boolean comprobacion_2 = false;
+		
+		String id_jug1=" ";
+		String id_jug2= " ";
 		if(comboBox.getSelectedItem().equals(comboBox_1.getSelectedItem()))
 		{
 			comprobacion=true;
@@ -160,7 +171,43 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 
 		}
 		
-		if(comprobacion==false)
+		
+		//Comprobar que los dos jugadores no tienen ya una partida empezada
+		for(Jugador j : lista_jugadores)
+		{
+			if(comboBox.getSelectedItem().equals(j.getNombre_usuario()))
+			{
+				id_jug1=Integer.toString(j.getId());
+			}
+		}
+		for(Jugador j : lista_jugadores)
+		{
+			if(comboBox_1.getSelectedItem().equals(j.getNombre_usuario()))
+			{
+				id_jug2=Integer.toString(j.getId());
+			}
+		}
+		
+		
+		//Comrpobar que el id1 y el id2 no son el id1 y id2 de la partida, o viceversa
+		
+		for(Partida p : lista_partidas)
+		{
+			if(((p.getId_j1().equals(id_jug1))&&((p.getId_j2().equals(id_jug2))))||((p.getId_j1().equals(id_jug2))&&((p.getId_j2().equals(id_jug1)))))
+			{
+				if(p.isTerminada()==false)
+				{
+					comprobacion_2=true;
+					JOptionPane.showMessageDialog(null, "Los jugadores ya tienen una partida en curso, si desea seguir con la partida vuelva al menu principal y elija CONTINUAR PARTIDA", "Error", ERROR_MESSAGE);
+
+				}
+			}
+			
+			
+		}
+		
+		
+		if(comprobacion==false && comprobacion_2==false)
 		{
 			FrameTablero tablero= new FrameTablero();
 			tablero.setVisible(true);
