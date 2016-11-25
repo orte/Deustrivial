@@ -12,7 +12,6 @@ public class Partida
 	private int id_j2;
 	private int dado;
 	private Tablero tablero;
-	private Puntuacion puntuacion;
 	private boolean turno;		//Si turno es true, le toca al jugador 1, si es false le toca al jugador 2
 	private boolean terminada;
 	private String fecha_inic;
@@ -23,7 +22,7 @@ public class Partida
 		this.id_j1=id1;
 		this.id_j2=id2;//El ID de los jugadores
 		tablero=new Tablero();//Situacion inicial por defecto
-		puntuacion = new Puntuacion();
+		
 		terminada=false;
 		this.comienzo();//da valor a turno 1 o 2
 		
@@ -66,14 +65,7 @@ public class Partida
 		this.tablero = tablero;
 	}
 
-	public Puntuacion getPuntuacion() {
-		return puntuacion;
-	}
-
-	public void setPuntuacion(Puntuacion puntuacion) {
-		this.puntuacion = puntuacion;
-	}
-
+	
 	public boolean isTerminada() {
 		return terminada;
 	}

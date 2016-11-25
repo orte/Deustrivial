@@ -167,7 +167,7 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 			
 			GestorPartidas gestorP= new GestorPartidas();
 			
-		//	gestorP.CrearPartida(id1, id2);
+			// gestorP.CrearPartida(id1, id2);
 			
 			//CrearClasePartida y Guardarla en fichero
 		}
