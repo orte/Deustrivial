@@ -104,7 +104,7 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 		comboBox.setBounds(15, 175, 259, 42);
 		for(Jugador a : lista_jugadores)
 		{
-			comboBox.addItem(a.getNombre_usuario()+ " "+ a.getId());
+			comboBox.addItem(a.getNombre_usuario());
 		}
 		contentPane.add(comboBox);
 		
@@ -117,7 +117,7 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 		
 		for(Jugador a : lista_jugadores)
 		{
-			comboBox_1.addItem(a.getNombre_usuario()+ " "+ a.getId());
+			comboBox_1.addItem(a.getNombre_usuario());
 		}
 		contentPane.add(comboBox_1);
 		
@@ -167,7 +167,27 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 			
 			GestorPartidas gestorP= new GestorPartidas();
 			
-			// gestorP.CrearPartida(id1, id2);
+			String n1=(String) comboBox.getSelectedItem();
+			String n2=(String)comboBox_1.getSelectedItem();
+			
+			String id1=" ";
+			String id2=" ";
+			for(Jugador j: lista_jugadores)
+			{
+				if(j.getNombre_usuario().equals(n1))
+				{
+					
+					
+				id1=Integer.toString(j.getId());
+					
+				}
+				if(j.getNombre_usuario().equals(n2))
+				{
+					id2=Integer.toString(j.getId());
+				}
+			}
+			
+			gestorP.CrearPartida(id1, id2);
 			
 			//CrearClasePartida y Guardarla en fichero
 		}
