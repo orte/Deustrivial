@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,6 +23,7 @@ import java.awt.Font;
 
 
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  * 
@@ -64,6 +65,10 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 	 
 	 Pregunta p ;
 	 private JTextArea textArea;
+	 
+	 private int temporizador;
+	 private Thread t = null;
+	 private JTextField tempoField;
 	
 
 	/**
@@ -108,6 +113,14 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		panel_1.setBounds(17, 206, 451, 222);
 		contentPane.add(panel_1);
 		panel_1.setLayout(new GridLayout(4, 4, 0, 0));
+
+		temporizador = 30;
+		
+		tempoField = new JTextField();
+		tempoField.setBounds(100, 460, 114, 19);
+		contentPane.add(tempoField);
+		tempoField.setText(new Integer(temporizador).toString());
+		tempoField.setColumns(10);
 		
 		categoria=Cat;
 		
@@ -119,7 +132,11 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 	public void CargarDatos() throws JDOMException, IOException
 	{
 		GestorXML gestor = new GestorXML();
-		p=gestor.SacarPregunta(categoria);
+		//p=gestor.SacarPregunta(categoria);
+		ArrayList<String> res = new ArrayList<String>();
+		String[] dffdj = {"a", "b", "c"};
+		res.addAll(Arrays.asList(dffdj));
+		p = new Pregunta("ju", "hu", res, "juihu");
 		pregunta= p.getPregunta();
 		
 		correcta = p.getCorrecta();
@@ -198,6 +215,36 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		lblPregunta.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblPregunta.setBounds(168, 0, 114, 20);
 		panel.add(lblPregunta);
+		
+		Runnable r = new Runnable(){
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				try {
+					while(temporizador>0){
+						temporizador--;
+						System.out.println(temporizador);
+						Thread.sleep(1000);
+						tempoField.setText(new Integer(temporizador).toString());
+						tempoField.repaint();
+						getContentPane().revalidate();
+					}
+					
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+			}
+			 
+		 };
+		 this.setVisible(true);
+		 t = new Thread(r);
+		 t.start();
+		 while(t.isAlive()){
+
+		 }
+		
 	}
 
 	public void actionPerformed(ActionEvent e) 
