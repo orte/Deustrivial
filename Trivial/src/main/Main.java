@@ -30,19 +30,7 @@ public class Main {
 		
 		
 		
-/**String sentencia= "SELECT * FROM JUGADOR";
-	
-	ResultSet rs = stmt.executeQuery(sentencia);
-	
-	while(rs.next())
-	{
-	System.out.print(rs.getString(1));
-	
-	System.out.println(rs.getString(2));
-	}
-	rs.close();
-	
-	**/
+
 
 		
 		

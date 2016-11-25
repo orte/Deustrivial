@@ -2,6 +2,7 @@ package LD;
 import java.sql.*;
 import java.util.ArrayList;
 
+import LN.FichaDePartida;
 import LN.Jugador;
 import LN.Partida;
 public class GestorSQL 
@@ -246,5 +247,34 @@ public void guardarJugador(Jugador jug)
 		
 	}
 
+public void GuardarPartida (Partida par, FichaDePartida p1, FichaDePartida p2)
+{
+	
+	
+	Connection conn = ConectarA("data/Trivial.db"); //Nos conectamos a la BD
+	Statement stmt = null;
+
+	try 
+	{
+		stmt = conn.createStatement();
+	}
+	catch (SQLException e1) 
+	{
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	
+	String sentencia = " INSERT INTO PARTIDA " + "VALUES( " +par.getId_P()+", "+par.getId_j1()+", "+par.getId_j2()+" , "+par.isTurno()+" , "+par.isTerminada()+" , "+par.getFecha_inic()+");";
+	try {
+		stmt.executeUpdate(sentencia);
+		System.out.println("Hecho, partida guardada!");
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
+	
+	//Falta seguir con las Fichas
+}
 
 }

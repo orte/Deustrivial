@@ -19,8 +19,19 @@ public class GestorPartidas
 
 	GestorSQL gesSQL = new GestorSQL();
 	
-	public void CrearPartida(String id1, String id2)
+	public ArrayList<Object> CrearPartida(String id1, String id2)
 	{
+		ArrayList<Object> objetos_partida = new ArrayList<Object>();
+		
+		Partida nuevaP = new Partida();
+		FichaDePartida f1 = new FichaDePartida(id1);
+		FichaDePartida f2 = new FichaDePartida(id2);
+		
+		objetos_partida.add(nuevaP);
+		objetos_partida.add(f1);
+		objetos_partida.add(f2);
+		
+		return objetos_partida;
 		
 		
 		

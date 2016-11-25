@@ -187,9 +187,10 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 				}
 			}
 			
-			gestorP.CrearPartida(id1, id2);
+			ArrayList<Object> lista_o= new ArrayList<Object>();
+			lista_o=gestorP.CrearPartida(id1, id2);
 			
-			//CrearClasePartida y Guardarla en fichero
+			//Guardar en fichero
 		}
 	}
 	@Override
