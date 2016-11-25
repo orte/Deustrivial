@@ -81,7 +81,44 @@
      <C> Ocio </C>
      </pregunta>
     
+    <pregunta>
+     <P>¿El golf moderno es considerado un invento de que pais?</P>
+     <R tipo="true">Escocia</R>
+     <R tipo="false">Irlanda</R>
+     <R tipo="false">Estados Unidos</R>
+     <R tipo="false">Australia</R>
+     <C> Deportes </C>
+
+    </pregunta>
     
+    <pregunta>
+     <P>¿En que pais esta situado el Mont Blanc?</P>
+     <R tipo="false">Suiza</R>
+     <R tipo="false">Austria</R>
+     <R tipo="false">Italia</R>
+     <R tipo="true">Francia</R>
+     <C> Geografia </C>
+
+    </pregunta>
     
+     <pregunta>
+     <P>¿De que pais es capital Jakarta?</P>
+     <R tipo="false">Malasia</R>
+     <R tipo="false">Afganistan</R>
+     <R tipo="true">Indonesia</R>
+     <R tipo="false">Filipinas</R>
+     <C> Geografia </C>
+
+    </pregunta>
+    
+     <pregunta>
+     <P>¿Cual es la velocidad maxima alcanzada por un humano?</P>
+     <R tipo="false">45 km/h</R>
+     <R tipo="false">37,5km/h</R>
+     <R tipo="false">60 km/h</R>
+     <R tipo="true">27,5 km/h</R>
+     <C> Deportes </C>
+
+    </pregunta>
 
    </Preguntas>
