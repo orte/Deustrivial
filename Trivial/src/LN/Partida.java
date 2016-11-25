@@ -8,15 +8,15 @@ public class Partida
 {
 
 	private String id_P;
-	private int id_j1;
-	private int id_j2;
+	private String id_j1;
+	private String id_j2;
 	private int dado;
 	private Tablero tablero;
 	private boolean turno;		//Si turno es true, le toca al jugador 1, si es false le toca al jugador 2
 	private boolean terminada;
 	private String fecha_inic;
 	
-	public Partida(int id1, int id2)
+	public Partida(String id1, String id2)
 	{
 	
 		this.id_j1=id1;
@@ -32,8 +32,13 @@ public class Partida
 		
 		
 	}
+	
+	public Partida ()
+	{
+		
+	}
 	public void comienzo(){
-		int sorteo = (int)(Math.random()*2+1);
+		int sorteo = (int)(Math.random());
 		System.out.println(sorteo);
 		if(sorteo == 0)
 		{
@@ -47,6 +52,10 @@ public class Partida
 		tablero.setPos_y_jug1(0);
 		tablero.setPos_x_jug2(0);
 		tablero.setPos_y_jug2(0);
+	}
+	public void tirarDado(){
+		int nuevoDado = (int) (Math.random()*6+1);
+		setDado(nuevoDado);
 	}
 	
 	
@@ -92,6 +101,22 @@ public class Partida
 	}
 	public void setFecha_inic(String fecha_inic) {
 		this.fecha_inic = fecha_inic;
+	}
+
+	public String getId_j1() {
+		return id_j1;
+	}
+
+	public void setId_j1(String id_j1) {
+		this.id_j1 = id_j1;
+	}
+
+	public String getId_j2() {
+		return id_j2;
+	}
+
+	public void setId_j2(String id_j2) {
+		this.id_j2 = id_j2;
 	}
 	
 	

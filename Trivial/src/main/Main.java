@@ -17,7 +17,7 @@ public class Main {
 	{
 		
 		GestorSQL gestorS= new GestorSQL();
-		gestorS.MostrarJugadores();
+		gestorS.MostrarPartidas();
 		//Connection conn = GestorSQL.ConectarA("Trivial.db"); //Nos conectamos a la BD
 		//Statement stmt = conn.createStatement();//Creamos un statement para ejecutar sobre la BD
 		

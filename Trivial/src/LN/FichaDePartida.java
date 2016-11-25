@@ -2,13 +2,13 @@ package LN;
 
 public class FichaDePartida {
 
-	private int id_jugador;
+	private String id_jugador;
 	private int id_partida;
 	private int num_quesitos;
 	private int preguntas_realizadas;
 	private int preguntas_acertadas;
 	
-	public FichaDePartida(int id_jugador)
+	public FichaDePartida(String id_jugador)
 	{
 		this.id_jugador = id_jugador;
 		this.num_quesitos = 0;
@@ -16,10 +16,10 @@ public class FichaDePartida {
 		this.preguntas_acertadas = 0;
 	}
 	
-	public int getId_jugador() {
+	public String getId_jugador() {
 		return id_jugador;
 	}
-	public void setId_jugador(int id_jugador) {
+	public void setId_jugador(String id_jugador) {
 		this.id_jugador = id_jugador;
 	}
 	public int getNum_quesitos() {
