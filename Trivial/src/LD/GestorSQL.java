@@ -236,14 +236,27 @@ public void guardarJugador(Jugador jug)
 		}
 		
 		String sentencia = "INSERT INTO JUGADOR" + "VALUES("+jug.getId()+", "+jug.getNombre_usuario()+");";
-		ResultSet rs = null;
+		
 		
 		try {
-			rs = stmt.executeQuery(sentencia);
+			stmt.executeUpdate(sentencia);
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
+		
+		
+		try {
+			conn.close();
+		} 
+		catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//Falta comprobar si escribe en la BD.
+		
 		
 	}
 
