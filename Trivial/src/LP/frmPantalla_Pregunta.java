@@ -132,22 +132,17 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 	public void CargarDatos() throws JDOMException, IOException
 	{
 		GestorXML gestor = new GestorXML();
-		//p=gestor.SacarPregunta(categoria);
-		ArrayList<String> res = new ArrayList<String>();
-		String[] dffdj = {"a", "b", "c"};
-		res.addAll(Arrays.asList(dffdj));
-		p = new Pregunta("ju", "hu", res, "juihu");
-		pregunta= p.getPregunta();
+		p=gestor.SacarPregunta(categoria);
 		
+		
+		pregunta= p.getPregunta();
 		correcta = p.getCorrecta();
 		
 		lista_R=p.getRespuestas();
 		lista_R.add(correcta);
 		
 		String aux= " ";
-		
-		
-		
+	
 		int pos=0;
 		
 		//Como la lista de respuestas siempre va aser size 4
@@ -177,7 +172,6 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 	}
 	public void CreateAndShow()
 	{
-		
 		
 		btn_R1 = new JButton(opcion1);
 		btn_R1.setFont(new Font("Arial", Font.PLAIN, 21));
@@ -216,6 +210,9 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		lblPregunta.setBounds(168, 0, 114, 20);
 		panel.add(lblPregunta);
 		
+		
+		
+		/**
 		Runnable r = new Runnable(){
 
 			@Override
@@ -244,7 +241,7 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		 while(t.isAlive()){
 
 		 }
-		
+		**/
 	}
 
 	public void actionPerformed(ActionEvent e) 

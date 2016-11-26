@@ -180,7 +180,7 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 			if(comboBox.getSelectedItem().equals(j.getNombre_usuario()))
 			{
 				id_jug1=Integer.toString(j.getId());
-				System.out.println(id_jug1);
+				
 				
 				// Esto no funciona porque los ID estan en String y en int.
 				//Hay que homogenizarlo o poner Strings que no empiecen por 0, porque sino al 
