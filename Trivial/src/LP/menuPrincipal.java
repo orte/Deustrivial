@@ -26,7 +26,7 @@ public class menuPrincipal extends JFrame
 	private static final long serialVersionUID = 1L;
 	backgroundPanel pBackground;
 	JPanel pBotonera;
-	String imagePath = "src\\img\\menuP.jpg";
+	String imagePath = "img/menuP.jpg";
 	
 	public menuPrincipal()
 	{

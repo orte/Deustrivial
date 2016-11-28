@@ -10,6 +10,7 @@ import org.jdom2.JDOMException;
 
 import LD.GestorSQL;
 import LD.GestorXML;
+import LN.Jugador;
 import LP.menuPrincipal;
 
 public class Main {
@@ -28,10 +29,6 @@ public class Main {
 		
 		//String sentencia =" INSERT INTO JUGADOR (ID_J, NOMBRE_J)VALUES('00001','JOSUNE')";
 		//stmt.executeUpdate(sentencia);
-		
-		
-	
-
 		
 		
 	}

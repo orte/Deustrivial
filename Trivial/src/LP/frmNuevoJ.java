@@ -34,6 +34,7 @@ public class frmNuevoJ extends JFrame implements ActionListener
 	
 	GestorSQL gestorS;
 	ArrayList<Jugador> lista_jugadores ;
+	Jugador jug;
 	
 	final int ERROR_MESSAGE=0;
 	
@@ -93,7 +94,6 @@ public class frmNuevoJ extends JFrame implements ActionListener
 	{
 		gestorS= new GestorSQL();
 		lista_jugadores= new ArrayList<Jugador>();
-		
 		lista_jugadores=gestorS.MostrarJugadores();
 		
 		
@@ -107,8 +107,23 @@ public class frmNuevoJ extends JFrame implements ActionListener
 		
 		String nuevo_nombre=textField.getText();
 		boolean comprobacion = false;
+		int aux=0;
 		
 		for(Jugador a : lista_jugadores)
+		{
+			
+			if(aux<a.getId())
+			{
+				aux=a.getId();
+			}
+			
+		}
+		System.out.println(aux);
+		
+		
+		
+		
+		for(Jugador a : lista_jugadores) // Comprobamos si existe o no un jugador con ese nombre de usuario
 		{
 			if(a.getNombre_usuario().equals(nuevo_nombre))
 			{
@@ -120,7 +135,10 @@ public class frmNuevoJ extends JFrame implements ActionListener
 		
 		if(comprobacion==false)
 		{
-			gestorS.GuardarJugadorYEstadistica(nuevo_nombre);
+			jug= new Jugador(aux+1,nuevo_nombre);
+			gestorS.guardarJugador(jug);
+			System.out.println("Usuario guardado y fichero de estadisticas creado correctamente");
+			
 		}
 		
 		

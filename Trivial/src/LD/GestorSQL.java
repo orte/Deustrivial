@@ -2,6 +2,7 @@ package LD;
 import java.sql.*;
 import java.util.ArrayList;
 
+import LN.Estadisticas;
 import LN.FichaDePartida;
 import LN.Jugador;
 import LN.Partida;
@@ -110,14 +111,7 @@ public class GestorSQL
 		
 	}
 	
-	public void GuardarJugadorYEstadistica (String nombre)
 	
-	{
-			//Solo recibidmos por parametro el nombre porque las estadisticas 
-			// no tienen ningun otro atributo libre y los ID_J e ID_E se generan 
-			// de fiorma mecanica +1.
-	}
-
 	
 public static ArrayList<Partida> MostrarPartidas() 
 
@@ -235,8 +229,19 @@ public void guardarJugador(Jugador jug)
 			e1.printStackTrace();
 		}
 		
-		String sentencia = "INSERT INTO JUGADOR" + "VALUES("+jug.getId()+", "+jug.getNombre_usuario()+");";
+		String sentencia = "INSERT INTO JUGADOR (ID_J, NOMBRE_J ) VALUES ( " +jug.getId()+ ", '"+jug.getNombre_usuario()+"'"+" );";
 		
+		
+		try 
+		{
+			stmt.executeUpdate(sentencia);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		sentencia = "INSERT INTO ESTADISTICA VALUES ("+ jug.getId()+" ,0 ,0 ,0 ,0"+ ");" ; 
 		
 		try {
 			stmt.executeUpdate(sentencia);
@@ -244,7 +249,6 @@ public void guardarJugador(Jugador jug)
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
 		
 		
 		try {
