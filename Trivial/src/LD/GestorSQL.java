@@ -2,7 +2,7 @@ package LD;
 import java.sql.*;
 import java.util.ArrayList;
 
-import LN.Estadisticas;
+
 import LN.FichaDePartida;
 import LN.Jugador;
 import LN.Partida;
@@ -147,7 +147,7 @@ public static ArrayList<Partida> MostrarPartidas()
 		String fecha = " ";
 		
 		ArrayList<Partida> datos_P_aux = new ArrayList<Partida>();
-		int id_int;
+		
 		
 		Partida P1;
 		
@@ -157,7 +157,6 @@ public static ArrayList<Partida> MostrarPartidas()
 				{
 					P1 = new Partida();
 					IDP =rs.getString(1);
-					id_int=Integer.parseInt(IDP);
 					P1.setId_P(IDP);
 					
 					ID1= rs.getString(2);
