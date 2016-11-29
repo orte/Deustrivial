@@ -6,9 +6,9 @@ public class Pregunta {
 	private String categoria;
 	private String pregunta;
 	private ArrayList<String> respuestas;
-	private String correcta;
+	private int correcta; //Índice de la respuesta correcta en el array de respuestas
 	
-	public Pregunta(String categoria, String pregunta, ArrayList<String>respuestas, String correcta){
+	public Pregunta(String categoria, String pregunta, ArrayList<String>respuestas, int correcta){
 		
 		this.categoria = categoria;
 		this.pregunta = pregunta;
@@ -29,7 +29,7 @@ public class Pregunta {
 		{
 		p3=p3+a+" ";	
 		}
-		String p_= this.getCorrecta(); 
+		int p_= this.getCorrecta(); 
 		String p_2= " y la correcta es " + this.getCorrecta();
 		 
 		String pp= p+ p3+ p_+p_2;
@@ -44,7 +44,7 @@ public class Pregunta {
 		
 	}
 	
-	public boolean esCorrecto(String respuesta){
+	public boolean esCorrecto(int respuesta){
 		if(respuesta == correcta){
 			return true;
 		} else {
@@ -76,11 +76,11 @@ public class Pregunta {
 		this.respuestas = respuestas;
 	}
 
-	public String getCorrecta() {
+	public int getCorrecta() {
 		return correcta;
 	}
 
-	public void setCorrecta(String correcta) {
+	public void setCorrecta(int correcta) {
 		this.correcta = correcta;
 	}
 	

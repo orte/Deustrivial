@@ -335,20 +335,12 @@ public class FrameTablero extends JFrame implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
 	{
+		//Aquí tenías un switch montado para pasarle la categoría correcta a la ventanaPregunta pero era tan sencillo
+		//como pasarle directamente el comando que recibamos y ya
 		// TODO Auto-generated method stub
-		String evento=arg0.getActionCommand();
-		
-		switch(evento)
-		{
-		
-		case comando_Ocio: AbrirVentanaPregunta(comando_Ocio);break;
-		case comando_Historia:AbrirVentanaPregunta(comando_Historia);break;
-		case comando_Geografia:AbrirVentanaPregunta(comando_Geografia);break;
-		case comando_Deportes:AbrirVentanaPregunta(comando_Deportes);break;
-		case comando_Ciencia:AbrirVentanaPregunta(comando_Ciencia);break;
-		
-		}
-				
+		String categoria=arg0.getActionCommand();
+		AbrirVentanaPregunta(categoria);
+			
 	}
 
 }

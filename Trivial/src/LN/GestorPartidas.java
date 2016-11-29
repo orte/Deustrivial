@@ -1,9 +1,13 @@
 package LN;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import org.jdom2.JDOMException;
+
 import LD.GestorSQL;
+import LD.GestorXML;
 
 /**
   * 
@@ -18,6 +22,7 @@ public class GestorPartidas
 	
 
 	GestorSQL gesSQL = new GestorSQL();
+	GestorXML gesXML = new GestorXML();
 	
 	public ArrayList<Object> CrearPartida(String id1, String id2)
 	{
@@ -51,6 +56,23 @@ public class GestorPartidas
 			}
 		}
 		return repetido;
+	}
+	
+	//Aquí he pasado el método que tenías en GestorXML (como te he puesto en el otro lado, estos datos se los tiene
+	//que pasar a la LP la LN, no la LD). Llama al método de GestorXML para obtener toda la lista de preguntas de 
+	//una categoría concreta y devuelve una al azar.
+	public Pregunta obtenerPregunta(String categoria){
+		Pregunta pregunta = null;
+		try {
+			ArrayList <Pregunta> lista = gesXML.listaPreguntas(categoria);
+			int random = (int)(Math.random()*lista.size());
+			pregunta = lista.get(random);
+		} catch (JDOMException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return pregunta;
 	}
 	
 }

@@ -23,205 +23,100 @@ public class GestorXML
 	{
 		super();
 	}
-	
-	public void leerXmlPreguntas() throws JDOMException, IOException
+
+
+
+	//Este método lo he cambiado para en vez de que devuelva una pregunta al azar de una categoría, devuelva la lista
+	//entera de preguntas de una categoría. Como te he puesto en frm_Pantalla_Pregunta, lo estabas usando para
+	//pasarle directamente las preguntas a las ventanas y creo que eso lo tiene que hacer la LN en vez de la LD, así
+	//que este lo he cambiado para que devuelva la lista, así tiene una función más útil. También lo he adaptado
+	//un poco para que meta en el array de respuestas las cuatro, en vez de tres, y Correcta sea el índice de
+	//la respuesta que tenga el tipo=true dentro de ese array
+	public ArrayList<Pregunta> listaPreguntas (String categoria) throws JDOMException, IOException
 	{
-	    //Se crea un SAXBuilder para poder parsear el archivo
-		
-	    SAXBuilder builder = new SAXBuilder();
-	    File xmlFile = new File( "data/Preguntas.xml" ); // Nombre de nuestro archivo
-	   
-	    Document document = (Document) builder.build(xmlFile);
-        // Se obtiene el elemento raiz
-        Element rootNode = document.getRootElement();
-        
-        System.out.println("El rootNode es" +rootNode);
-        System.out.println( " ");
-           
-        
-        System.out.println("Actualmente tenemos  "+ rootNode.getChildren().size()+ " guardadas en memoria a disposicion del usuario"); // Devuelve el contenido del fichero...
-        											//Almenos el tipo de elementos que contiene
-        											// Aunque sin atributos
-        
-        System.out.println(" ");
-        
-        
-        
-        
-        
-        
-        
-        
-        List<Element>lista_P = rootNode.getChildren("pregunta");
-        ArrayList<Pregunta> Array_P= new ArrayList<Pregunta>();
-        
-        ArrayList<Pregunta> Array_P_aux= new ArrayList<Pregunta>();//Un array en el que meterlos ( preguntas de la partida)
-     // Para todos los elementos guardados en <Preguntas> y que sean <pregunta>
-        for(int i=0;i<=lista_P.size()-1;i++)
-        {
-        	
-         Element element = (Element) lista_P.get(i); //Creamos un elemento que vaya recogiendo los elementos "pregunta"
-         Pregunta pregunta = new Pregunta();			// Una instancia de la clase auxiliar para crear preguntad con los datos del elemento
-        
-         
-         pregunta.setPregunta(element.getChildText("P")); //Mostramos el texto de la pregutna por pantalla y se lo pasamos como atributo a la instancia
-         System.out.println("Pregunta : "+element.getChildText("P"));
-         
-         System.out.println("Respuestas posibles : ");//lo mismo con las respuestas
-          List lista_R = element.getChildren("R");//Al haber 3 las recogemos en una lista
-          ArrayList <String> resp_aux = new ArrayList <String> (); // Y sino al Array de incorrectas
-          int numero_r;
-        	for(int j=0; j<=lista_R.size()-1;j++) //Hacemos un for para ir sacandolas
-        		
-        	{
-        		numero_r=j+1;
-        		Element element_R = (Element) lista_R.get(j); 
-        		if(element_R.getAttributeValue("tipo").equals("T")) //Si es T pasa al atributo String Correcta
-        		{
-        			pregunta.setCorrecta(element_R.getText());
-        		}
-        		
-        		
-        		
-        		if(element_R.getAttributeValue("tipo").equals("F"))
-        		{
-        			
-        			resp_aux.add(element_R.getText());
-        			pregunta.setRespuestas(resp_aux);
-        		}
-        		
-        		//Mostramos por pantalla el resto de la info de la pregunta
-        		System.out.println("Respuesta " + numero_r + " " +element_R.getText() + " "+ element_R.getAttributeValue("tipo")); 
-        		
-        	}
-        	
-        	
-        pregunta.setCategoria(element.getChildText("C")); //Lo mismo que con el texto de la pregunta
-        System.out.println("Categoria : "+element.getChildText("C"));
-  
-         
-         System.out.println( " ");
-         
-         
-         
-         //A�adimos las preguntas al Array auxiliar de preguntas 
-         Array_P_aux.add(pregunta);
-         
-         Array_P=Array_P_aux;
-        
-        	 
-        }
-        
-        
-        
-        System.out.println("En el Array de Preguntas hay: " + Array_P.size() + " pregunta(s)" );
-        
-        
-        for(Pregunta p : Array_P)
-        {
-        
-       	System.out.println(p.toString()); //Comprobacion de que las preguntas se han creado bien 
-       									// Y de que estan en el array
-        }
-        
-    
-        }
-	
-	public Pregunta SacarPregunta (String categoria) throws JDOMException, IOException
-	{
-		  SAXBuilder builder = new SAXBuilder();
-		    File xmlFile = new File( "data/Preguntas.xml" ); // Nombre de nuestro archivo
-		   
-		    Document document = (Document) builder.build(xmlFile);
-	        // Se obtiene el elemento raiz
-	        Element rootNode = document.getRootElement();
-	       
-	        
-	        List<Element>lista_P = rootNode.getChildren("pregunta");
-	        ArrayList<Pregunta> Array_P= new ArrayList<Pregunta>();
-	        
-	        ArrayList<Pregunta> Array_P_aux= new ArrayList<Pregunta>();//Un array en el que meterlos ( preguntas de la partida)
-	        // Para todos los elementos guardados en <Preguntas> y que sean <pregunta>
-	           for(int i=0;i<=lista_P.size()-1;i++)
-	           {
-	           	
-	            Element element = (Element) lista_P.get(i); //Creamos un elemento que vaya recogiendo los elementos "pregunta"
-	            Pregunta pregunta = new Pregunta();			// Una instancia de la clase auxiliar para crear preguntad con los datos del elemento
-	            
-	            if(element.getChildText("C").equals(categoria))
-	            {
-	            
-	            pregunta.setPregunta(element.getChildText("P")); 
-	            System.out.println(element.getChildText("P"));
-	           
-	            
-	            
-	             List lista_R = element.getChildren("R");//Al haber 3 las recogemos en una lista
-	             ArrayList <String> resp_aux = new ArrayList <String> (); // Y sino al Array de incorrectas
-	             
-	             for(int j=0; j<=lista_R.size()-1;j++) //Hacemos un for para ir sacandolas
-	           		
-	             {
-	           		
-	           		Element element_R = (Element) lista_R.get(j); 
-	           		if(element_R.getAttributeValue("tipo").equals("true")) //Si es T pasa al atributo String Correcta
-	           		{
-	           			pregunta.setCorrecta(element_R.getText());
-	           		}
-	           		
-	           		if(element_R.getAttributeValue("tipo").equals("false"))
-	           		{
-	           			
-	           			resp_aux.add(element_R.getText());
-	           			pregunta.setRespuestas(resp_aux);
-	           		}
-	           		
-	           	
-	           	}
-	           	
-	           pregunta.setCategoria(element.getChildText("C")); //Lo mismo que con el texto de la pregunta
-	           Array_P_aux.add(pregunta);
-	           Array_P=Array_P_aux;
-	          }
-	           
-	        
-	       }
-	           
-	           //Elegir aleatoriamente una pregunta del array_P
-	           
-	          int posAleatoria= (int)(Math.random()*(Array_P.size()-1) + 0);
-	           Pregunta p=Array_P.get(posAleatoria);// en lugar de object pones el tipo de dato que maneja tu array 
-	           return p;
-	        
+		SAXBuilder builder = new SAXBuilder();
+		File xmlFile = new File( "data/Preguntas.xml" ); // Nombre de nuestro archivo
+
+		Document document = (Document) builder.build(xmlFile);
+		// Se obtiene el elemento raiz
+		Element rootNode = document.getRootElement();
+
+
+		List<Element>lista_P = rootNode.getChildren("pregunta");
+		ArrayList<Pregunta> Array_P= new ArrayList<Pregunta>();
+
+		ArrayList<Pregunta> Array_P_aux= new ArrayList<Pregunta>();//Un array en el que meterlos ( preguntas de la partida)
+		// Para todos los elementos guardados en <Preguntas> y que sean <pregunta>
+		for(int i=0;i<=lista_P.size()-1;i++)
+		{
+
+			Element element = (Element) lista_P.get(i); //Creamos un elemento que vaya recogiendo los elementos "pregunta"
+			Pregunta pregunta = new Pregunta();			// Una instancia de la clase auxiliar para crear preguntad con los datos del elemento
+
+			if(element.getChildText("C").equals(categoria))
+			{
+
+				pregunta.setPregunta(element.getChildText("P")); 
+				System.out.println(element.getChildText("P"));
+
+
+
+				List<Element> lista_R = element.getChildren("R");//Al haber 4 las recogemos en una lista
+				ArrayList <String> resp_aux = new ArrayList <String> (); // Y sino al Array de incorrectas
+
+				for(int j=0; j<lista_R.size();j++) //Hacemos un for para ir sacandolas
+
+				{
+
+					Element element_R = (Element) lista_R.get(j); 
+
+					resp_aux.add(element_R.getText());
+					pregunta.setRespuestas(resp_aux);
+					if(element_R.getAttributeValue("tipo").equals("true")) //Si es T pasa al atributo int Correcta
+					{
+						pregunta.setCorrecta(j);
+					}
+
+				}
+
+				pregunta.setCategoria(element.getChildText("C")); //Lo mismo que con el texto de la pregunta
+				Array_P_aux.add(pregunta);
+				Array_P=Array_P_aux;
+			}
+
+
+		}
+
+		return Array_P;
 	}
-	
-	
-	
+
+
+
 	public void escribirEnXMLJugadores(int ultimo_id, String nombre_J) throws JDOMException, IOException
-    {
-    	
-    	 SAXBuilder builder = new SAXBuilder();
-		  File xmlFile = new File( "data/Jugadores.xml" ); // Nombre de nuestro archivo
-		  Document document = (Document) builder.build(xmlFile);
-		  Element Jugadores = new Element("Jugadores");
-		  Jugadores = document.getRootElement();
-		  
-		  String nuevo_id=String.valueOf(ultimo_id+1);
-	 
-	      Element nuevo_J = new Element("jugador");
-	      nuevo_J.setAttribute(new Attribute("id_j",nuevo_id));
-	      nuevo_J.addContent(new Element ("Nombre").setText(nombre_J));
-	      
-	      Jugadores.addContent(nuevo_J);
-	    
-	  	// new XMLOutputter().output(doc, System.out);
+	{
+
+		SAXBuilder builder = new SAXBuilder();
+		File xmlFile = new File( "data/Jugadores.xml" ); // Nombre de nuestro archivo
+		Document document = (Document) builder.build(xmlFile);
+		Element Jugadores = new Element("Jugadores");
+		Jugadores = document.getRootElement();
+
+		String nuevo_id=String.valueOf(ultimo_id+1);
+
+		Element nuevo_J = new Element("jugador");
+		nuevo_J.setAttribute(new Attribute("id_j",nuevo_id));
+		nuevo_J.addContent(new Element ("Nombre").setText(nombre_J));
+
+		Jugadores.addContent(nuevo_J);
+
+		// new XMLOutputter().output(doc, System.out);
 		XMLOutputter xmlOutput = new XMLOutputter();
-	 
-			// display nice nice
-			xmlOutput.setFormat(Format.getPrettyFormat());
-			xmlOutput.output(document, new FileWriter("data/Jugadores.xml"));
-	 
-    }    
-        
-	
-	}
+
+		// display nice nice
+		xmlOutput.setFormat(Format.getPrettyFormat());
+		xmlOutput.output(document, new FileWriter("data/Jugadores.xml"));
+
+	}    
+
+
+}
