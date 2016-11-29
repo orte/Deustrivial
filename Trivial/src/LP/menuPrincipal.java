@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JLabel;
 
 
 
@@ -160,10 +161,6 @@ public void actionPerformed(ActionEvent arg0)
 	}
 	
 }
- 
- 
- 
- 
 }
 
 

@@ -112,17 +112,7 @@ public class GestorXML
         	 
         }
         
-        
-        
-        System.out.println("En el Array de Preguntas hay: " + Array_P.size() + " pregunta(s)" );
-        
-        
-        for(Pregunta p : Array_P)
-        {
-        
-       	System.out.println(p.toString()); //Comprobacion de que las preguntas se han creado bien 
-       									// Y de que estan en el array
-        }
+
         
     
         }
@@ -152,7 +142,7 @@ public class GestorXML
 	            {
 	            
 	            pregunta.setPregunta(element.getChildText("P")); 
-	            System.out.println(element.getChildText("P"));
+	           
 	           
 	            
 	            
@@ -197,31 +187,6 @@ public class GestorXML
 	
 	
 	
-	public void escribirEnXMLJugadores(int ultimo_id, String nombre_J) throws JDOMException, IOException
-    {
-    	
-    	 SAXBuilder builder = new SAXBuilder();
-		  File xmlFile = new File( "data/Jugadores.xml" ); // Nombre de nuestro archivo
-		  Document document = (Document) builder.build(xmlFile);
-		  Element Jugadores = new Element("Jugadores");
-		  Jugadores = document.getRootElement();
-		  
-		  String nuevo_id=String.valueOf(ultimo_id+1);
-	 
-	      Element nuevo_J = new Element("jugador");
-	      nuevo_J.setAttribute(new Attribute("id_j",nuevo_id));
-	      nuevo_J.addContent(new Element ("Nombre").setText(nombre_J));
-	      
-	      Jugadores.addContent(nuevo_J);
-	    
-	  	// new XMLOutputter().output(doc, System.out);
-		XMLOutputter xmlOutput = new XMLOutputter();
-	 
-			// display nice nice
-			xmlOutput.setFormat(Format.getPrettyFormat());
-			xmlOutput.output(document, new FileWriter("data/Jugadores.xml"));
-	 
-    }    
-        
+	
 	
 	}
