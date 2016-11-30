@@ -34,6 +34,7 @@ public class GestorXML
 	//la respuesta que tenga el tipo=true dentro de ese array
 	public ArrayList<Pregunta> listaPreguntas (String categoria) throws JDOMException, IOException
 	{
+
 		SAXBuilder builder = new SAXBuilder();
 		File xmlFile = new File( "data/Preguntas.xml" ); // Nombre de nuestro archivo
 
@@ -45,13 +46,16 @@ public class GestorXML
 		List<Element>lista_P = rootNode.getChildren("pregunta");
 		ArrayList<Pregunta> Array_P= new ArrayList<Pregunta>();
 
-		ArrayList<Pregunta> Array_P_aux= new ArrayList<Pregunta>();//Un array en el que meterlos ( preguntas de la partida)
+		ArrayList<Pregunta> Array_P_aux= new ArrayList<Pregunta>();
+		//Un array en el que meterlos ( preguntas de la partida)
 		// Para todos los elementos guardados en <Preguntas> y que sean <pregunta>
 		for(int i=0;i<=lista_P.size()-1;i++)
 		{
 
-			Element element = (Element) lista_P.get(i); //Creamos un elemento que vaya recogiendo los elementos "pregunta"
-			Pregunta pregunta = new Pregunta();			// Una instancia de la clase auxiliar para crear preguntad con los datos del elemento
+			Element element = (Element) lista_P.get(i); 
+			//Creamos un elemento que vaya recogiendo los elementos "pregunta"
+			Pregunta pregunta = new Pregunta();			
+			// Una instancia de la clase auxiliar para crear preguntad con los datos del elemento
 
 			if(element.getChildText("C").equals(categoria))
 			{
@@ -88,11 +92,11 @@ public class GestorXML
 		}
 
 		return Array_P;
+		
 	}
 
-
-
 	public void escribirEnXMLJugadores(int ultimo_id, String nombre_J) throws JDOMException, IOException
+
 	{
 
 		SAXBuilder builder = new SAXBuilder();
