@@ -246,7 +246,6 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 				try {
 					while(temporizador>0 && running){
 						temporizador--;
-						System.out.println(temporizador);
 						Thread.sleep(1000);
 						tempoField.setText(new Integer(temporizador).toString());
 						tempoField.repaint();

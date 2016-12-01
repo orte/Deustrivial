@@ -4,6 +4,7 @@ package LP;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -70,6 +71,9 @@ public class FrameTablero extends JFrame implements ActionListener
 	JButton btnNewButton_32;
 	JButton btnNewButton_33;
 	JButton btnNewButton_34;
+	
+	JLabel ficha1;
+	JLabel ficha2;
 	
 	final String comando_Ocio=" Ocio ";
 	final String comando_Historia=" Historia ";

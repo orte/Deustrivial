@@ -6,62 +6,55 @@ public class Tablero {
 	private int pos_y_jug1;
 	private int pos_x_jug2;
 	private int pos_y_jug2;
+	private String [] categorias = {"Geografía", "Historia", "Ocio", "Deportes"};
 	
 	public Tablero(){
-		casillas = new Casilla[6][6];
-		for (int i = 0; i<6; i++){
-			for (int j = 0; j<6; j++){
+		casillas = new Casilla[4][4];
+		for (int i = 0; i<4; i++){
+			for (int j = 0; j<4; j++){
 				String categoria = "";
 				boolean quesito;
-				if(j==0){
-					quesito = true;
-					categoria = obtenerCategoria(i);
-				} else{
-					quesito = false;
-					categoria = obtenerCategoria(j);
-				}
+				
+				quesito = false;
+				categoria = obtenerCategoria(j);
 				casillas[i][j] = new Casilla(i, j, categoria, quesito);
 			}
+			cambiarOrden();
 		}
 		this.pos_x_jug1 = 0;
 		this.pos_y_jug1 = 0;
 		this.pos_x_jug2 = 0;
 		this.pos_y_jug2 = 0;
 	}
-	
+	public void cambiarOrden(){
+		String primero = categorias[0];
+		for(int i = 0; i<categorias.length-1; i++){
+			categorias[i] = categorias[i+1];
+		}
+		categorias[categorias.length-1] = primero;
+		
+	}
 	public String obtenerCategoria(int cat){
 		String categoria = null;
-		switch(cat){
-		case 0: categoria = "Geografía"; break;
-		case 1: categoria = "Arte y Literatura"; break;
-		case 2: categoria = "Historia"; break;
-		case 3: categoria = "Entretenimiento"; break;
-		case 4: categoria = "Ciencias y Naturaleza"; break;
-		case 5: categoria = "Deporte"; break;
-		}
+		categoria = categorias[cat];
 		return categoria;
 	}
 	public void mover(int jug, int dado){
 		if (jug == 1){
-			if(getPos_y_jug1()+dado>5){
-				setPos_y_jug1((getPos_y_jug1()+dado)-6);
+			if(getPos_y_jug1()+dado>3){
+				setPos_y_jug1((getPos_y_jug1()+dado)-4);
 				setPos_x_jug1(getPos_x_jug1()+1);
 			} else{
 				setPos_y_jug1(getPos_y_jug1()+dado);
 			}
 		} else {
-			if(getPos_y_jug2()==5){
-				setPos_y_jug2((getPos_y_jug2()+dado)-6);
+			if(getPos_y_jug2()+dado>3){
+				setPos_y_jug2((getPos_y_jug2()+dado)-4);
 				setPos_x_jug2(getPos_x_jug2()+1);
 			} else{
 				setPos_y_jug2(getPos_y_jug2()+dado);
 			}
 		}
-	}
-	public Pregunta preguntar(int jugador){
-		//Nos falta por determinar como vamos a obtener las preguntas
-		Pregunta pregunta = null;
-		return pregunta;
 	}
 	
 	public Casilla[][] getCasillas(){
