@@ -16,6 +16,10 @@ public class FichaDePartida {
 		this.preguntas_acertadas = 0;
 	}
 	
+	public FichaDePartida()
+		{
+				
+		}
 	public String getId_jugador() {
 		return id_jugador;
 	}

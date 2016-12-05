@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import LD.GestorSQL;
+import LN.FichaDePartida;
 import LN.GestorPartidas;
 import LN.Jugador;
 import LN.Partida;
@@ -50,6 +51,7 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 	
 	final String comando_E= "E";
 	final int ERROR_MESSAGE=0;
+	GestorSQL gestorS;
 	
 	
 	
@@ -137,7 +139,7 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 	public void CargarDatos() 
 	{
 		
-		GestorSQL gestorS = new GestorSQL();
+		gestorS = new GestorSQL();
 		lista_jugadores= new ArrayList<Jugador>();
 		nombres = new ArrayList<String>();
 		
@@ -244,7 +246,18 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 			ArrayList<Object> lista_o= new ArrayList<Object>();
 			lista_o=gestorP.CrearPartida(id1, id2);
 			
-			//Guardar en fichero
+			Partida p = new Partida();
+			FichaDePartida fp1 = new FichaDePartida();
+			FichaDePartida fp2 = new FichaDePartida();
+			
+			
+		p=(Partida) lista_o.get(0);
+		fp1=(FichaDePartida) lista_o.get(1);
+		fp2=(FichaDePartida) lista_o.get(2);
+		
+		
+		gestorS.GuardarPartida(p, fp1, fp2);
+		
 		}
 	}
 	@Override

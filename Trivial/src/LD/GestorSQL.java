@@ -113,7 +113,7 @@ public class GestorSQL
 	
 	
 	
-public static ArrayList<Partida> MostrarPartidas() 
+	public static ArrayList<Partida> MostrarPartidas() 
 
 {
 	GestorSQL G = new GestorSQL(); 
@@ -280,7 +280,7 @@ public void GuardarPartida (Partida par, FichaDePartida p1, FichaDePartida p2)
 		e1.printStackTrace();
 	}
 	
-	String sentencia = " INSERT INTO PARTIDA " + "VALUES( " +par.getId_P()+", "+par.getId_j1()+", "+par.getId_j2()+" , "+par.isTurno()+" , "+par.isTerminada()+" , "+par.getFecha_inic()+");";
+	String sentencia = " INSERT INTO PARTIDA " + "VALUES( '" +par.getId_P()+"' , '"+par.getId_j1()+"' , '"+par.getId_j2()+"' , "+par.isTurno()+" , '"+par.isTerminada()+"' , '"+par.getFecha_inic()+"' );";
 	try {
 		stmt.executeUpdate(sentencia);
 		System.out.println("Hecho, partida guardada!");

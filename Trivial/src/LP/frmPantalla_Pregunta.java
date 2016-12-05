@@ -68,9 +68,9 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 	 Pregunta p ;
 	 private JTextArea textArea;
 	 
-	 private int temporizador;
-	 private Thread t = null;
-	 private JTextField tempoField;
+	 int temporizador;
+	 Thread t = null;
+	 JTextField tempoField;
 	 
 	 GestorPartidas gesPart = new GestorPartidas();
 	
@@ -119,12 +119,6 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		panel_1.setLayout(new GridLayout(4, 4, 0, 0));
 
 		temporizador = 30;
-		
-		tempoField = new JTextField();
-		tempoField.setBounds(100, 460, 114, 19);
-		contentPane.add(tempoField);
-		tempoField.setText(new Integer(temporizador).toString());
-		tempoField.setColumns(10);
 		
 		categoria=Cat;
 		
@@ -233,10 +227,18 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		lblPregunta.setBounds(168, 0, 114, 20);
 		panel.add(lblPregunta);
 		
+		tempoField = new JTextField();
+		tempoField.setBounds(40, 1, 114, 19);
+		panel.add(tempoField);
+		tempoField.setEditable(false);
+		tempoField.setText(new Integer(temporizador).toString());
+		tempoField.setColumns(10);
+		
 		
 		
 		//El runnable del temporizador, mientras running sea true y no haya llegado a 0 irá contando descendentemente
 		//de 30 a 0 e irá actualizando el textfield del temporizador
+		
 		Runnable r = new Runnable(){
 
 			@Override
@@ -276,10 +278,12 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		
 		String c = e.getActionCommand();
 		String respuesta = " ";
+		
 		//Había visto como lo habías hecho y creo que era más sencillo guardar los cuatro botones en un array,
 		//y a la hora de tener que cambiarle el color a la respuesta elegida, mirar	si el índice de la respuesta
 		//correcta era el mismo que el índice del botón en el array. En el caso de que si, lo pintas de verde, y 
 		//en el caso de que no, lo pintas de rojo y pintas de verde el botón que corresponde a la respuesta correcta
+		
 		for(int i = 0; i<listaBotones.length; i++){
 			if(c.equals(listaBotones[i].getActionCommand())){
 				JButton btnAux = listaBotones[i];
