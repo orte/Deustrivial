@@ -54,7 +54,7 @@ public class Partida
 		tablero.setPos_y_jug2(0);
 	}
 	public void tirarDado(){
-		int nuevoDado = (int) (Math.random()*6+1);
+		int nuevoDado = (int) (Math.random()*4+1);
 		setDado(nuevoDado);
 	}
 	

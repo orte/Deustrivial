@@ -27,7 +27,7 @@ import javax.swing.border.EtchedBorder;
 public class frmEmpezarPartida extends JFrame implements ActionListener 
 {
 	
-	//Falta: que si a pantalla cambia de tamaño el JPanel y su contenido lo hagan tambien.
+	//Falta: que si a pantalla cambia de tamaï¿½o el JPanel y su contenido lo hagan tambien.
 
 	/**
 	 * 
@@ -216,7 +216,7 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 		
 		if(comprobacion==false && comprobacion_2==false)
 		{
-			FrameTablero tablero= new FrameTablero();
+			FrameTablero tablero= new FrameTablero(new Partida());
 			tablero.setVisible(true);
 			
 			GestorPartidas gestorP= new GestorPartidas();
