@@ -102,11 +102,13 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 507, 505);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 224));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 224));
 		panel.setBounds(17, 21, 451, 170);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -142,7 +144,7 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		
 		
 		pregunta= p.getPregunta();
-		int corr = p.getCorrecta();
+		int corr = p.getCorrecta(); 
 		correcta = p.getRespuestas().get(corr);
 		
 		//Aquí lo habías hecho de manera que las diferentes respuestas se pusiesen en los botones de forma aleatoria
@@ -183,6 +185,7 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		//Aquí voy metiendo los botones en el array a medida que los creo, y les pongo el texto que corresponde a 
 		//esa misma posición en el array de respuestas
 		btn_R1 = new JButton();
+		btn_R1.setBackground(new Color(204, 255, 204));
 		btn_R1.setText(lista_R.get(0));
 		btn_R1.setFont(new Font("Arial", Font.PLAIN, 21));
 		btn_R1.addActionListener(this);
@@ -191,6 +194,7 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		listaBotones[0] = btn_R1;
 		
 		btn_R2 = new JButton();
+		btn_R2.setBackground(new Color(204, 255, 204));
 		btn_R2.setText(lista_R.get(1));
 		btn_R2.setFont(new Font("Arial", Font.PLAIN, 21));
 		btn_R2.addActionListener(this);
@@ -199,6 +203,7 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		listaBotones[1] = btn_R2;
 		
 		btn_R3 = new JButton();
+		btn_R3.setBackground(new Color(204, 255, 204));
 		btn_R3.setText(lista_R.get(2));
 		btn_R3.setFont(new Font("Arial", Font.PLAIN, 21));
 		btn_R3.addActionListener(this);
@@ -207,6 +212,7 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		listaBotones[2] = btn_R3;
 		
 		btn_R4 = new JButton();
+		btn_R4.setBackground(new Color(204, 255, 204));
 		btn_R4.setText(lista_R.get(3));
 		btn_R4.setFont(new Font("Arial", Font.PLAIN, 21));
 		btn_R2.addActionListener(this);
@@ -214,21 +220,24 @@ public class frmPantalla_Pregunta extends JFrame implements ActionListener
 		panel_1.add(btn_R4);
 		listaBotones[3] = btn_R4;
 		
-		textArea = new JTextArea();
-		textArea.setFont(new Font("Arial", Font.PLAIN,20));
-		textArea.setEditable(false);
-		textArea.setBounds(0, 29, 451, 141);
-		textArea.setLineWrap(true); // Para que el texto se divida en lineas
-		textArea.setText(p.getPregunta());
-		panel.add(textArea);
-		
 		JLabel lblPregunta = new JLabel("PREGUNTA");
 		lblPregunta.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblPregunta.setBounds(168, 0, 114, 20);
 		panel.add(lblPregunta);
 		
+		textArea = new JTextArea();
+		textArea.setBackground(new Color(255, 255, 224));
+		textArea.setFont(new Font("Arial", Font.PLAIN,20));
+		textArea.setEditable(false);
+		textArea.setBounds(15, 29, 451, 141);
+		textArea.setLineWrap(true); // Para que el texto se divida en lineas
+		textArea.setText(p.getPregunta());
+		panel.add(textArea);
+		
 		tempoField = new JTextField();
-		tempoField.setBounds(40, 1, 114, 19);
+		tempoField.setBackground(new Color(255, 255, 224));
+		tempoField.setFont(new Font("Arial", Font.BOLD, 21));
+		tempoField.setBounds(40, 1, 89, 28);
 		panel.add(tempoField);
 		tempoField.setEditable(false);
 		tempoField.setText(new Integer(temporizador).toString());

@@ -3,14 +3,15 @@ package LN;
 public class FichaDePartida {
 
 	private String id_jugador;
-	private int id_partida;
+	private String id_partida;
 	private int num_quesitos;
 	private int preguntas_realizadas;
 	private int preguntas_acertadas;
 	
-	public FichaDePartida(String id_jugador)
+	public FichaDePartida(String id_jugador, String idP)
 	{
 		this.id_jugador = id_jugador;
+		this.setId_partida(idP);
 		this.num_quesitos = 0;
 		this.preguntas_realizadas = 0;
 		this.preguntas_acertadas = 0;
@@ -45,11 +46,11 @@ public class FichaDePartida {
 		this.preguntas_acertadas = preguntas_acertadas;
 	}
 
-	public int getId_partida() {
+	public String getId_partida() {
 		return id_partida;
 	}
 
-	public void setId_partida(int id_partida) {
+	public void setId_partida(String id_partida) {
 		this.id_partida = id_partida;
 	}
 	

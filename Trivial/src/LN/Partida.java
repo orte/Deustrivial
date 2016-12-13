@@ -12,7 +12,7 @@ public class Partida
 	private String id_j2;
 	private int dado;
 	private Tablero tablero;
-	private boolean turno;		//Si turno es true, le toca al jugador 1, si es false le toca al jugador 2
+	private int turno;		//Si turno es true, le toca al jugador 1, si es false le toca al jugador 2
 	private boolean terminada;
 	private String fecha_inic;
 	
@@ -42,11 +42,11 @@ public class Partida
 		System.out.println(sorteo);
 		if(sorteo == 0)
 		{
-			turno = false;
+			turno = 1;
 		} 
 		else 
 		{
-			turno = true;
+			turno = 2;
 		}
 		tablero.setPos_x_jug1(0);
 		tablero.setPos_y_jug1(0);
@@ -83,11 +83,11 @@ public class Partida
 		this.terminada = terminada;
 	}
 
-	public boolean isTurno() {
+	public int isTurno() {
 		return turno;
 	}
 
-	public void setTurno(boolean turno) {
+	public void setTurno(int turno) {
 		this.turno = turno;
 	}
 	public String getId_P() {

@@ -187,6 +187,8 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 				// Esto no funciona porque los ID estan en String y en int.
 				//Hay que homogenizarlo o poner Strings que no empiecen por 0, porque sino al 
 				//hacer la conversion la hace quitandolos y el resultado pasa de ser 00001 a ser 1.
+				
+				//YA FUNCIONA
 			}
 		}
 		for(Jugador j : lista_jugadores)
@@ -226,25 +228,56 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 			String n1=(String) comboBox.getSelectedItem();
 			String n2=(String)comboBox_1.getSelectedItem();
 			
+		System.out.println(n1 + " "+ n2);
+			
 			String id1=" ";
 			String id2=" ";
+			
+			
 			for(Jugador j: lista_jugadores)
 			{
 				if(j.getNombre_usuario().equals(n1))
 				{
 					
-					
 				id1=Integer.toString(j.getId());
+				
+				
 					
 				}
 				if(j.getNombre_usuario().equals(n2))
 				{
 					id2=Integer.toString(j.getId());
+				
 				}
+				
+				System.out.println(id1+" "+ id2);
 			}
 			
 			ArrayList<Object> lista_o= new ArrayList<Object>();
-			lista_o=gestorP.CrearPartida(id1, id2);
+			
+			
+			//Conseguri aqui el siguiente ID_P
+			String nuevo_idP = " ";
+			int aux =0;
+			int idp_int=0;
+			String idp=" ";
+			
+			for(Partida pp : lista_partidas)
+			{
+				idp=pp.getId_P();
+				idp_int =Integer.parseInt(idp);
+				
+				if(idp_int> aux)
+				{
+					
+					aux=idp_int;
+				}
+				
+			}
+			aux=aux+1;
+			
+			nuevo_idP=String.valueOf(aux);
+			lista_o=gestorP.CrearPartida(id1, id2,nuevo_idP);
 			
 			Partida p = new Partida();
 			FichaDePartida fp1 = new FichaDePartida();

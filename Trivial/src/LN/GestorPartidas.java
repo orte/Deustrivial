@@ -24,13 +24,18 @@ public class GestorPartidas
 	GestorSQL gesSQL = new GestorSQL();
 	GestorXML gesXML = new GestorXML();
 	
-	public ArrayList<Object> CrearPartida(String id1, String id2)
+	public ArrayList<Object> CrearPartida(String id1, String id2, String idP)
 	{
 		ArrayList<Object> objetos_partida = new ArrayList<Object>();
 		
 		Partida nuevaP = new Partida();
-		FichaDePartida f1 = new FichaDePartida(id1);
-		FichaDePartida f2 = new FichaDePartida(id2);
+		nuevaP.setId_j1(id1);
+		nuevaP.setId_j2(id2);
+		nuevaP.setId_P(idP);
+	
+	
+		FichaDePartida f1 = new FichaDePartida(id1,idP);
+		FichaDePartida f2 = new FichaDePartida(id2,idP);
 		
 		objetos_partida.add(nuevaP);
 		objetos_partida.add(f1);

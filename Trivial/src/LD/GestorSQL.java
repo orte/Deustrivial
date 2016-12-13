@@ -167,13 +167,7 @@ public class GestorSQL
 					
 					turno=rs.getInt(4);
 					
-					if(turno == 1)
-					{
-						P1.setTurno(true);					}
-					else 
-					{
-						P1.setTurno(false);
-					}
+					
 					
 					terminada=rs.getBoolean("TERMINADA");
 					P1.setTerminada(terminada);
@@ -269,6 +263,10 @@ public void GuardarPartida (Partida par, FichaDePartida p1, FichaDePartida p2)
 	
 	Connection conn = ConectarA("data/Trivial.db"); //Nos conectamos a la BD
 	Statement stmt = null;
+	
+	
+//Comprobado que la partida y las fichas llegan OK
+	
 
 	try 
 	{
@@ -280,7 +278,8 @@ public void GuardarPartida (Partida par, FichaDePartida p1, FichaDePartida p2)
 		e1.printStackTrace();
 	}
 	
-	String sentencia = " INSERT INTO PARTIDA " + "VALUES( '" +par.getId_P()+"' , '"+par.getId_j1()+"' , '"+par.getId_j2()+"' , "+par.isTurno()+" , '"+par.isTerminada()+"' , '"+par.getFecha_inic()+"' );";
+	String sentencia = " INSERT INTO PARTIDA " + "VALUES( '" +par.getId_P()+"' , '"+par.getId_j1()+"' , '"+par.getId_j2()+"' ," +par.isTurno()+ ",'" +par.isTerminada()+"', '"+par.getFecha_inic()+"' );";
+	System.out.println(sentencia);
 	try {
 		stmt.executeUpdate(sentencia);
 		System.out.println("Hecho, partida guardada!");
@@ -289,7 +288,7 @@ public void GuardarPartida (Partida par, FichaDePartida p1, FichaDePartida p2)
 		e.printStackTrace();
 	}
 
-	sentencia = "INSERT INTO FICHA_PARTIDA VALUES (  "+ p1.getId_jugador()+", "+p1.getId_partida()+", "+p1.getNum_quesitos()+", "+p1.getPreguntas_realizadas()+", "+p1.getPreguntas_acertadas()+" );";
+	sentencia = "INSERT INTO FICHA_PARTIDA VALUES (  '"+ p1.getId_jugador()+"', '"+p1.getId_partida()+"', "+p1.getNum_quesitos()+", "+p1.getPreguntas_realizadas()+", "+p1.getPreguntas_acertadas()+" );";
 	try {
 		stmt.executeUpdate(sentencia);
 		System.out.println("Ficha1 guardada!");
