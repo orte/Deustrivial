@@ -79,5 +79,32 @@ public class GestorPartidas
 		
 		return pregunta;
 	}
+	public String rutaDado(int dado){
+		String ruta = "img/dado";
+		ruta = ruta.concat(dado+".jpg");
+		return ruta;
+	}
+	public int[] nuevaPosicion(int posX, int posY, int dado){
+		int[] posicion = new int[2];
+		if(posY+dado>3){
+			posicion[1] = (posY+dado-4);
+			if(posX+1<4){
+				posicion[0] = posX+1;
+			} else{
+				posicion[0] = 0;
+			}
+		} else if(posY+dado<0){
+			posicion[1] = posY+4+dado;
+			if(posX-1<0){
+				posicion[0] = 3;
+			} else{
+				posicion[0] = posX-1;
+			}
+		} else{
+			posicion[1] = posY+dado;
+			posicion[0] = posX;
+		}
+		return posicion;
+	}
 	
 }

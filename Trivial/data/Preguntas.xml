@@ -9,7 +9,7 @@
      <R tipo="false">Negro</R> 
      <R tipo="false">Azul</R>
      <R tipo="false">Blanco</R>
-     <C> Ocio </C>
+     <C>Ocio</C>
      </pregunta>
 
     <pregunta>
@@ -18,7 +18,7 @@
      <R tipo="false">1869</R>
      <R tipo="true">1969</R>
      <R tipo="false">1989</R>
-     <C> Historia </C>
+     <C>Historia</C>
 
     </pregunta>
     
@@ -30,7 +30,7 @@
      <R tipo="false">Peroxisomas</R> 
     
      
-     <C> Ciencia </C>
+     <C>Ciencia</C>
      </pregunta>
 
     <pregunta>
@@ -39,7 +39,7 @@
      <R tipo="false">2</R>
      <R tipo="true">5-7</R>
      <R tipo="false">3-4</R>
-     <C> Ciencia </C>
+     <C>Ciencia</C>
 
     </pregunta>
     
@@ -50,7 +50,7 @@
      <R tipo="false">Draco Malfoy</R> 
      <R tipo="false">Neville Longbotton</R>
      <R tipo="false">Voldemort</R>
-     <C> Ocio </C>
+     <C>Ocio</C>
      </pregunta>
      
        <pregunta>
@@ -59,7 +59,7 @@
      <R tipo="false">Bombero</R> 
      <R tipo="false">Ladron de bancos</R>
      <R tipo="false">Samurai</R>
-     <C> Ocio </C>
+     <C>Ocio</C>
      </pregunta>
      
      <pregunta>
@@ -68,7 +68,7 @@
      <R tipo="false">Matematico</R>
      <R tipo="true">Fisico Experimental</R>
      <R tipo="false">Quimico</R>
-     <C> Ocio </C>
+     <C>Ocio</C>
 
     </pregunta>
     
@@ -78,7 +78,7 @@
      <R tipo="false">Brasil</R> 
      <R tipo="false">España</R>
      <R tipo="false">Alaska</R>
-     <C> Ocio </C>
+     <C>Ocio</C>
      </pregunta>
     
     <pregunta>
@@ -87,7 +87,7 @@
      <R tipo="false">Irlanda</R>
      <R tipo="false">Estados Unidos</R>
      <R tipo="false">Australia</R>
-     <C> Deportes </C>
+     <C>Deportes</C>
 
     </pregunta>
     
@@ -97,7 +97,7 @@
      <R tipo="false">Austria</R>
      <R tipo="false">Italia</R>
      <R tipo="true">Francia</R>
-     <C> Geografia </C>
+     <C>Geografia</C>
 
     </pregunta>
     
@@ -107,7 +107,7 @@
      <R tipo="false">Afganistan</R>
      <R tipo="true">Indonesia</R>
      <R tipo="false">Filipinas</R>
-     <C> Geografia </C>
+     <C>Geografia</C>
 
     </pregunta>
     
@@ -117,7 +117,7 @@
      <R tipo="false">37,5km/h</R>
      <R tipo="false">60 km/h</R>
      <R tipo="true">27,5 km/h</R>
-     <C> Deportes </C>
+     <C>Deportes</C>
 
     </pregunta>
 
