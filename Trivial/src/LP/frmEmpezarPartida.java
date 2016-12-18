@@ -16,6 +16,7 @@ import LN.FichaDePartida;
 import LN.GestorPartidas;
 import LN.Jugador;
 import LN.Partida;
+import LP.FrameTableroCopy;
 
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;
@@ -220,8 +221,12 @@ public class frmEmpezarPartida extends JFrame implements ActionListener
 		
 		if(comprobacion==false && comprobacion_2==false)
 		{
-			FrameTablero tablero= new FrameTablero(new Partida());
+			/**FrameTablero tablero= new FrameTablero(new Partida());
+			tablero.setVisible(true);**/
+			
+			FrameTableroCopy tablero = new FrameTableroCopy(new Partida());
 			tablero.setVisible(true);
+			
 			
 			GestorPartidas gestorP= new GestorPartidas();
 			
