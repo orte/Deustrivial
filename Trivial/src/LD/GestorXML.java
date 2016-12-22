@@ -57,13 +57,10 @@ public class GestorXML
 			Pregunta pregunta = new Pregunta();			
 			// Una instancia de la clase auxiliar para crear preguntad con los datos del elemento
 
-			System.out.println(element.getChildText("C"));
 			if(element.getChildText("C").equals(categoria))
 			{
 
-				System.out.println("hey");
 				pregunta.setPregunta(element.getChildText("P")); 
-				System.out.println(element.getChildText("P"));
 
 
 
