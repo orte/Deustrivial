@@ -18,7 +18,7 @@ public class Casilla {
 
 	public void ponerIcono(){
 		switch (getCategoria()){
-		case "Geografía": setIcono("casilla_geografia"); break;
+		case "Geografia": setIcono("casilla_geografia"); break;
 		case "Historia": setIcono("casilla_historia"); break;
 		case "Ocio": setIcono("casilla_ocio"); break;
 		case "Deportes": setIcono("casilla_deportes"); break;

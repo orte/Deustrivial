@@ -1,13 +1,15 @@
+
 package LN;
 
 import java.awt.Color;
 import java.util.ArrayList;
 
 public class Pregunta {
+	private int id_pregunta;
 	private String categoria;
 	private String pregunta;
 	private ArrayList<String> respuestas;
-	private int correcta; //Ãndice de la respuesta correcta en el array de respuestas
+	private int correcta; //Índice de la respuesta correcta en el array de respuestas
 	
 	public Pregunta(String categoria, String pregunta, ArrayList<String>respuestas, int correcta){
 		
@@ -83,6 +85,14 @@ public class Pregunta {
 
 	public void setCorrecta(int correcta) {
 		this.correcta = correcta;
+	}
+
+	public int getId_pregunta() {
+		return id_pregunta;
+	}
+
+	public void setId_pregunta(int id_pregunta) {
+		this.id_pregunta = id_pregunta;
 	}
 	
 	

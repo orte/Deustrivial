@@ -6,7 +6,7 @@ public class Tablero {
 	private int pos_y_jug1;
 	private int pos_x_jug2;
 	private int pos_y_jug2;
-	private String [] categorias = {"Geografía", "Historia", "Ocio", "Deportes"};
+	private String [] categorias = {"Geografia", "Historia", "Ocio", "Deportes"};
 	
 	public Tablero(){
 		casillas = new Casilla[4][4];

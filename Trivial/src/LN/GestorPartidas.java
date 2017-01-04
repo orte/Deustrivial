@@ -68,15 +68,9 @@ public class GestorPartidas
 	//una categoría concreta y devuelve una al azar.
 	public Pregunta obtenerPregunta(String categoria){
 		Pregunta pregunta = null;
-		try {
-			ArrayList <Pregunta> lista = gesXML.listaPreguntas(categoria);
-			int random = (int)(Math.random()*lista.size());
-			pregunta = lista.get(random);
-		} catch (JDOMException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		ArrayList <Pregunta> lista = gesSQL.listaPreguntas(categoria);	
+		int random = (int)(Math.random()*lista.size());
+		pregunta = lista.get(random);
 		return pregunta;
 	}
 	public String rutaDado(int dado){

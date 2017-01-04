@@ -225,6 +225,7 @@ private static final long serialVersionUID = 1L;
 			int x = Integer.parseInt(arg0.getActionCommand().substring(0, 1));
 			int y = Integer.parseInt(arg0.getActionCommand().substring(2));
 			cas = partida.getTablero().getCasillas()[x][y];
+			
 			AbrirVentanaPregunta(cas.getCategoria());
 		}
 			

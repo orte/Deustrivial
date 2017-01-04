@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import LN.FichaDePartida;
 import LN.Jugador;
 import LN.Partida;
+import LN.Pregunta;
 public class GestorSQL 
 {
 	public Connection ConectarA (String ruta)
@@ -37,10 +38,56 @@ public class GestorSQL
 		 return conec;
 	
 	}
+	public ArrayList<Pregunta> listaPreguntas(String categoria){
+		Connection conn = ConectarA("data/trivial");
+		Statement stmt = null;
+		try {
+			stmt = conn.createStatement();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String sentencia = "SELECT * FROM preguntas WHERE categoria = \""+categoria+"\"";
+		ResultSet rs = null;
+		try {
+			rs = stmt.executeQuery(sentencia);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		int id_pregunta = 0;
+		String pregunta = null;
+		
+		int correcta = -1;
+		
+		ArrayList<Pregunta> resultado = new ArrayList<Pregunta>();
+		Pregunta aux;
+		try {
+			while(rs.next()){
+				ArrayList <String> respuestas = new ArrayList<String>();
+				id_pregunta = rs.getInt("id_pregunta");
+				for(int i = 0; i<4; i++){
+					String res = rs.getString("respuesta"+(i+1));
+					respuestas.add(res);
+				}
+				pregunta = rs.getString("pregunta");
+				correcta = rs.getInt("correcta");
+				aux = new Pregunta(categoria, pregunta, respuestas, correcta);
+				aux.setId_pregunta(id_pregunta);
+				resultado.add(aux);
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		return resultado;
+	}
+	
 	
 	public ArrayList<Jugador> MostrarJugadores()  
 	{
-		Connection conn = ConectarA("data/Trivial.db"); //Nos conectamos a la BD
+		Connection conn = ConectarA("data/trivial.db"); //Nos conectamos a la BD
 		Statement stmt = null;
 	
 		try {
