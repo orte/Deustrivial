@@ -3,7 +3,6 @@ package LD;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,114 +11,94 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import LN.Pregunta;
+import LN.Partida;
 
 
 
 public class GestorXML 
 {
-
-	public GestorXML()
-	{
-		super();
-	}
-
-
-
-	//Este método lo he cambiado para en vez de que devuelva una pregunta al azar de una categoría, devuelva la lista
-	//entera de preguntas de una categoría. Como te he puesto en frm_Pantalla_Pregunta, lo estabas usando para
-	//pasarle directamente las preguntas a las ventanas y creo que eso lo tiene que hacer la LN en vez de la LD, así
-	//que este lo he cambiado para que devuelva la lista, así tiene una función más útil. También lo he adaptado
-	//un poco para que meta en el array de respuestas las cuatro, en vez de tres, y Correcta sea el índice de
-	//la respuesta que tenga el tipo=true dentro de ese array
-	public ArrayList<Pregunta> listaPreguntas (String categoria) throws JDOMException, IOException
-	{
-
+	public void nuevaPartida(Partida nueva) throws JDOMException, IOException{
 		SAXBuilder builder = new SAXBuilder();
-		File xmlFile = new File( "data/Preguntas.xml" ); // Nombre de nuestro archivo
-
+		File xmlFile = new File( "data/partidas.xml" ); // Nombre de nuestro archivo
 		Document document = (Document) builder.build(xmlFile);
-		// Se obtiene el elemento raiz
-		Element rootNode = document.getRootElement();
-
-
-		List<Element>lista_P = rootNode.getChildren("pregunta");
-		ArrayList<Pregunta> Array_P= new ArrayList<Pregunta>();
-
-		ArrayList<Pregunta> Array_P_aux= new ArrayList<Pregunta>();
-		//Un array en el que meterlos ( preguntas de la partida)
-		// Para todos los elementos guardados en <Preguntas> y que sean <pregunta>
-		for(int i=0;i<=lista_P.size()-1;i++)
-		{
-
-			Element element = (Element) lista_P.get(i); 
-			//Creamos un elemento que vaya recogiendo los elementos "pregunta"
-			Pregunta pregunta = new Pregunta();			
-			// Una instancia de la clase auxiliar para crear preguntad con los datos del elemento
-
-			if(element.getChildText("C").equals(categoria))
-			{
-
-				pregunta.setPregunta(element.getChildText("P")); 
-
-
-
-				List<Element> lista_R = element.getChildren("R");//Al haber 4 las recogemos en una lista
-				ArrayList <String> resp_aux = new ArrayList <String> (); // Y sino al Array de incorrectas
-
-				for(int j=0; j<lista_R.size();j++) //Hacemos un for para ir sacandolas
-
-				{
-
-					Element element_R = (Element) lista_R.get(j); 
-
-					resp_aux.add(element_R.getText());
-					pregunta.setRespuestas(resp_aux);
-					if(element_R.getAttributeValue("tipo").equals("true")) //Si es T pasa al atributo int Correcta
-					{
-						pregunta.setCorrecta(j);
-					}
-
-				}
-
-				pregunta.setCategoria(element.getChildText("C")); //Lo mismo que con el texto de la pregunta
-				Array_P_aux.add(pregunta);
-				Array_P=Array_P_aux;
-			}
-
-
-		}
-
-		return Array_P;
+		Element partidas = new Element("Partidas");
+		partidas = document.getRootElement();
 		
-	}
-
-	public void escribirEnXMLJugadores(int ultimo_id, String nombre_J) throws JDOMException, IOException
-
-	{
-
-		SAXBuilder builder = new SAXBuilder();
-		File xmlFile = new File( "data/Jugadores.xml" ); // Nombre de nuestro archivo
-		Document document = (Document) builder.build(xmlFile);
-		Element Jugadores = new Element("Jugadores");
-		Jugadores = document.getRootElement();
-
-		String nuevo_id=String.valueOf(ultimo_id+1);
-
-		Element nuevo_J = new Element("jugador");
-		nuevo_J.setAttribute(new Attribute("id_j",nuevo_id));
-		nuevo_J.addContent(new Element ("Nombre").setText(nombre_J));
-
-		Jugadores.addContent(nuevo_J);
-
-		// new XMLOutputter().output(doc, System.out);
+		Element nuevaP = new Element("partida");
+		nuevaP.setAttribute(new Attribute("fecha", nueva.getFecha_inic()));
+		nuevaP.addContent(new Element("id_jug1").setText(Integer.toString(nueva.getId_j1())));
+		nuevaP.addContent(new Element("id_jug2").setText(Integer.toString(nueva.getId_j2())));
+		nuevaP.addContent(new Element("posx_jug1").setText(Integer.toString(nueva.getPosx_jug1())));
+		nuevaP.addContent(new Element("posy_jug1").setText(Integer.toString(nueva.getPosy_jug1())));
+		nuevaP.addContent(new Element("posx_jug2").setText(Integer.toString(nueva.getPosx_jug2())));
+		nuevaP.addContent(new Element("posy_jug2").setText(Integer.toString(nueva.getPosy_jug2())));
+		nuevaP.addContent(new Element("puntJug1").setText(Integer.toString(nueva.getPuntJug1())));
+		nuevaP.addContent(new Element("puntJug2").setText(Integer.toString(nueva.getPuntJug2())));
+		nuevaP.addContent(new Element("dado").setText(Integer.toString(nueva.getDado())));
+		int turno;
+		if(nueva.getTurno()){
+			turno = 1;
+		} else{
+			turno = 2;
+		}
+		nuevaP.addContent(new Element("turno").setText(Integer.toString(turno)));;
+		partidas.addContent(nuevaP);
 		XMLOutputter xmlOutput = new XMLOutputter();
-
-		// display nice nice
 		xmlOutput.setFormat(Format.getPrettyFormat());
-		xmlOutput.output(document, new FileWriter("data/Jugadores.xml"));
-
-	}    
-
-
+		xmlOutput.output(document, new FileWriter("data/partidas.xml"));
+	}
+	public void guardarPartida(String fecha, String id_jug1, String id_jug2, String posx_jug1, String posy_jug1, String posx_jug2, String posy_jug2, String puntJug1, String puntJug2, String dado, String turno) throws JDOMException, IOException{
+		SAXBuilder builder = new SAXBuilder();
+		File xmlFile = new File( "data/partidas.xml" ); // Nombre de nuestro archivo
+		Document document = (Document) builder.build(xmlFile);
+		XMLOutputter xmlOut = new XMLOutputter();
+		Element partidas = new Element("Partidas");
+		partidas = document.getRootElement();
+		List<Element> list = partidas.getChildren();
+		for(int i = 0; i<list.size(); i++){
+			Element aux = (Element) list.get(i);
+			if(aux.getAttributeValue("fecha").equals(fecha)){
+				aux.getChild("id_jug1").setText(id_jug1);
+				aux.getChild("id_jug2").setText(id_jug2);
+				aux.getChild("posx_jug1").setText(posx_jug1);
+				aux.getChild("posy_jug1").setText(posy_jug1);
+				aux.getChild("posx_jug2").setText(posx_jug2);
+				aux.getChild("posy_jug2").setText(posy_jug2);
+				aux.getChild("puntJug1").setText(puntJug1);
+				aux.getChild("puntJug2").setText(puntJug2);
+				aux.getChild("dado").setText(dado);
+				aux.getChild("turno").setText(turno);
+				xmlOut.setFormat(Format.getPrettyFormat());
+                xmlOut.output(document, new FileWriter("data/partidas.xml"));
+				
+				
+			}
+		}
+	}
+	public void borrarPartida(String fecha) throws JDOMException, IOException{
+		SAXBuilder builder = new SAXBuilder();
+		File xmlFile = new File( "data/partidas.xml" ); // Nombre de nuestro archivo
+		Document document = (Document) builder.build(xmlFile);
+		XMLOutputter xmlOut = new XMLOutputter();
+		Element partidas = new Element("Partidas");
+		partidas = document.getRootElement();
+		List<Element> list = partidas.getChildren();
+		for(int i = 0; i<list.size(); i++){
+			Element aux = (Element) list.get(i);
+			if(aux.getAttributeValue("fecha").equals(fecha)){
+				aux.getParent().removeContent(aux);
+				xmlOut.setFormat(Format.getPrettyFormat());
+                xmlOut.output(document, new FileWriter("data/partidas.xml"));
+			}
+		}
+	}
+	public List<Element> listaPartidas() throws JDOMException, IOException{
+		SAXBuilder builder = new SAXBuilder();
+		File xmlFile = new File( "data/partidas.xml" ); // Nombre de nuestro archivo
+		Document document = (Document) builder.build(xmlFile);
+		Element partidas = new Element("Partidas");
+		partidas = document.getRootElement();
+		List<Element> list = partidas.getChildren();
+		return list;
+	}
 }

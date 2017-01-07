@@ -2,29 +2,32 @@ package LN;
 
 public class Tablero {
 	private Casilla [][] casillas;
-	private int pos_x_jug1;
-	private int pos_y_jug1;
-	private int pos_x_jug2;
-	private int pos_y_jug2;
 	private String [] categorias = {"Geografia", "Historia", "Ocio", "Deportes"};
-	
-	public Tablero(){
+
+	public Tablero(int posx_jug1, int posy_jug1, int posx_jug2, int posy_jug2){
 		casillas = new Casilla[4][4];
 		for (int i = 0; i<4; i++){
 			for (int j = 0; j<4; j++){
-				String categoria = "";
-				boolean quesito;
-				
-				quesito = false;
-				categoria = obtenerCategoria(j);
-				casillas[i][j] = new Casilla(i, j, categoria, quesito);
+				String categoria = obtenerCategoria(j);
+				boolean hayDos = false;
+				boolean ocupada = false;
+				if ((i == posx_jug1&& j==posy_jug1)||(i == posx_jug2&& j==posy_jug2)){
+					ocupada = true;
+				}
+				casillas[i][j] = new Casilla(i, j, categoria, ocupada, hayDos);
 			}
 			cambiarOrden();
 		}
-		this.pos_x_jug1 = 0;
-		this.pos_y_jug1 = 0;
-		this.pos_x_jug2 = 0;
-		this.pos_y_jug2 = 0;
+		if (posx_jug1 == posx_jug2 && posy_jug1 == posy_jug2){
+			casillas[posx_jug1][posy_jug1].setOcupada(true);
+			casillas[posx_jug1][posy_jug1].setHayDos(true);
+			casillas[posx_jug1][posy_jug1].ponerIconoFichas(2);
+		} else{
+			casillas[posx_jug1][posy_jug1].setOcupada(true);
+			casillas[posx_jug2][posy_jug2].setOcupada(true);
+			casillas[posx_jug1][posy_jug1].ponerIconoFichas(0);
+			casillas[posx_jug2][posy_jug2].ponerIconoFichas(1);
+		}
 	}
 	public void cambiarOrden(){
 		String primero = categorias[0];
@@ -39,23 +42,7 @@ public class Tablero {
 		categoria = categorias[cat];
 		return categoria;
 	}
-	public void mover(int jug, int dado){
-		if (jug == 1){
-			if(getPos_y_jug1()+dado>3){
-				setPos_y_jug1((getPos_y_jug1()+dado)-4);
-				setPos_x_jug1(getPos_x_jug1()+1);
-			} else{
-				setPos_y_jug1(getPos_y_jug1()+dado);
-			}
-		} else {
-			if(getPos_y_jug2()+dado>3){
-				setPos_y_jug2((getPos_y_jug2()+dado)-4);
-				setPos_x_jug2(getPos_x_jug2()+1);
-			} else{
-				setPos_y_jug2(getPos_y_jug2()+dado);
-			}
-		}
-	}
+	
 	
 	public Casilla[][] getCasillas(){
 		return casillas;
@@ -63,30 +50,4 @@ public class Tablero {
 	public void setCasillas(Casilla[][] casillas){
 		this.casillas = casillas;
 	}
-	public int getPos_x_jug1() {
-		return pos_x_jug1;
-	}
-	public void setPos_x_jug1(int pos_x_jug1) {
-		this.pos_x_jug1 = pos_x_jug1;
-	}
-	public int getPos_y_jug1() {
-		return pos_y_jug1;
-	}
-	public void setPos_y_jug1(int pos_y_jug1) {
-		this.pos_y_jug1 = pos_y_jug1;
-	}
-	public int getPos_x_jug2() {
-		return pos_x_jug2;
-	}
-	public void setPos_x_jug2(int pos_x_jug2) {
-		this.pos_x_jug2 = pos_x_jug2;
-	}
-	public int getPos_y_jug2() {
-		return pos_y_jug2;
-	}
-	public void setPos_y_jug2(int pos_y_jug2) {
-		this.pos_y_jug2 = pos_y_jug2;
-	}
-	
-
 }

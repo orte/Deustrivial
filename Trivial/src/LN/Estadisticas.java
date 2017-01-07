@@ -1,20 +1,27 @@
 package LN;
 
-import java.util.ArrayList;
 
 public class Estadisticas {
 	private int id_jugador;
 	private int partidas_jugadas;
 	private int partidas_ganadas;
+	private int preguntas_totales;
 	private int preguntas_acertadas;
-	private int preguntas_falladas;
+	private float porcent_acertadas;
 	
-	public Estadisticas(int id_jugador){
+	public Estadisticas(int id_jugador, int preg_tot, int preg_acert, int part_jug, int part_gan){
 		this.id_jugador = id_jugador;
-		this.partidas_jugadas = 0;
-		this.partidas_ganadas = 0;
-		this.preguntas_acertadas=0;
-		this.preguntas_falladas=0;
+		this.partidas_jugadas = part_jug;
+		this.partidas_ganadas = part_gan;
+		this.preguntas_totales = preg_tot;
+		this.preguntas_acertadas = preg_acert;
+		if(preg_tot == 0){
+			this.porcent_acertadas = 0;
+		} else{
+			this.porcent_acertadas = (((float)(preg_acert))/((float)(preg_tot)))*100;
+			
+		}
+		
 	}
 
 	public int getId_jugador() {
@@ -50,6 +57,14 @@ public class Estadisticas {
 		setPartidas_jugadas(getPartidas_jugadas()+1);
 	}
 
+	public int getPreguntas_totales() {
+		return preguntas_totales;
+	}
+
+	public void setPreguntas_totales(int preguntas_totales) {
+		this.preguntas_totales = preguntas_totales;
+	}
+
 	public int getPreguntas_acertadas() {
 		return preguntas_acertadas;
 	}
@@ -58,14 +73,11 @@ public class Estadisticas {
 		this.preguntas_acertadas = preguntas_acertadas;
 	}
 
-	public int getPreguntas_falladas() {
-		return preguntas_falladas;
+	public float getPorcent_acertadas() {
+		return porcent_acertadas;
 	}
 
-	public void setPreguntas_falladas(int preguntas_falladas) {
-		this.preguntas_falladas = preguntas_falladas;
+	public void setPorcent_acertadas(float porcent_acertadas) {
+		this.porcent_acertadas = porcent_acertadas;
 	}
-	
-	
-
 }

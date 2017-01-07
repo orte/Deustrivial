@@ -1,7 +1,6 @@
 
 package LN;
 
-import java.awt.Color;
 import java.util.ArrayList;
 
 public class Pregunta {
@@ -17,33 +16,6 @@ public class Pregunta {
 		this.pregunta = pregunta;
 		this.respuestas = respuestas;
 		this.correcta = correcta;
-		
-	}
-	
-	@Override
-	public String toString() 
-	{
-		String p = this.getPregunta() + "de la categoria " + this.getCategoria() + " tiene las siguientes respuestas posibles :";
-		String p3= " ";
-		ArrayList<String> resp = new ArrayList<String>();
-		resp=this.getRespuestas();
-		
-		for(String a : resp)
-		{
-		p3=p3+a+" ";	
-		}
-		int p_= this.getCorrecta(); 
-		String p_2= " y la correcta es " + this.getCorrecta();
-		 
-		String pp= p+ p3+ p_+p_2;
-		
-		
-		return pp;
-		
-	}
-
-	public Pregunta ()
-	{
 		
 	}
 	

@@ -5,14 +5,16 @@ public class Casilla {
 	private int posicion_x;
 	private int posicion_y;
 	private String categoria;
-	private boolean quesito;
+	private boolean ocupada;
+	private boolean hayDos;
 	private String icono;
 	
-	public Casilla(int posicion_x, int posicion_y, String categoria, boolean quesito){
+	public Casilla(int posicion_x, int posicion_y, String categoria, boolean ocupada, boolean hayDos){
 		this.posicion_x = posicion_x;
 		this.posicion_y = posicion_y;
 		this.categoria = categoria;
-		this.quesito = quesito;
+		this.setOcupada(ocupada);
+		this.setHayDos(hayDos);
 		ponerIcono();
 	}
 
@@ -26,6 +28,7 @@ public class Casilla {
 		
 	}
 	public void ponerIconoFichas(int jugador){
+		ponerIcono();
 		String subs = getIcono().substring(4, getIcono().length()-4);
 		if(jugador == 0){
 			setIcono(subs+"_ficha1");
@@ -33,6 +36,8 @@ public class Casilla {
 			setIcono(subs+"_ficha2");
 		} else if(jugador ==2){
 			setIcono(subs+"_ficha12");
+		} else if(jugador == 3){
+			setIcono(subs);
 		}
 	}
 	
@@ -60,14 +65,6 @@ public class Casilla {
 		this.categoria = categoria;
 	}
 
-	public boolean isQuesito() {
-		return quesito;
-	}
-
-	public void setQuesito(boolean quesito) {
-		this.quesito = quesito;
-	}
-
 	public String getIcono() {
 		return icono;
 	}
@@ -75,6 +72,22 @@ public class Casilla {
 	public void setIcono(String icono) {
 		String ruta = "img/"+icono+".jpg";
 		this.icono = ruta;
+	}
+
+	public boolean isOcupada() {
+		return ocupada;
+	}
+
+	public void setOcupada(boolean ocupada) {
+		this.ocupada = ocupada;
+	}
+
+	public boolean isHayDos() {
+		return hayDos;
+	}
+
+	public void setHayDos(boolean hayDos) {
+		this.hayDos = hayDos;
 	}
 	
 
