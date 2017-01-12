@@ -36,8 +36,10 @@ public class FrameNuevaPartida extends JFrame implements ActionListener{
 	private JLabel lblJug_1;
 	
 	private GestorDatos gesDat = new GestorDatos();
+	private JButton btnSalir;
 	
 	public FrameNuevaPartida() {
+		setTitle("Nueva Partida");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 677, 498);
 		contentPane = new JPanel();
@@ -116,6 +118,14 @@ public class FrameNuevaPartida extends JFrame implements ActionListener{
 		lblJug_1 = new JLabel("Jug. 2");
 		lblJug_1.setBounds(332, 204, 56, 16);
 		contentPane.add(lblJug_1);
+		
+		btnSalir = new JButton("Salir");
+		btnSalir.setBounds(284, 425, 97, 25);
+		btnSalir.setActionCommand("Salir");
+		btnSalir.addActionListener(this);
+		contentPane.add(btnSalir);
+		this.setResizable(false);
+
 	}
 
 	@Override
@@ -127,7 +137,13 @@ public class FrameNuevaPartida extends JFrame implements ActionListener{
 		case "Nuevo Jugador": nuevo(); break;
 		case "Empezar": empezar(); break;
 		case "Eliminar": eliminar(); break;
+		case "Salir": salir();
 		}
+	}
+	public void salir(){
+		this.dispose();
+		MenuPrincipal frm = new MenuPrincipal();
+		frm.setVisible(true);
 	}
 	public void agregar(){
 		

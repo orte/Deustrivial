@@ -20,8 +20,10 @@ public class FrameEstadisticas extends JFrame implements ActionListener { static
 	private JTable table;
 	private JButton btnOrden;
 	private boolean modo=false;
+	private JButton btnSalir;
 
 	public FrameEstadisticas() {
+		setTitle("Estadísticas");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("Estadisticas de los jugadores");
@@ -42,39 +44,52 @@ public class FrameEstadisticas extends JFrame implements ActionListener { static
 		
 		btnOrden = new JButton("Ranking de aciertos");
 		btnOrden.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnOrden.setBounds(214, 373, 200, 23);
+		btnOrden.setBounds(226, 375, 200, 23);
 		btnOrden.addActionListener(this);
+		btnOrden.setActionCommand("Ranking");
 		getContentPane().add(btnOrden);
-		this.setSize(667, 433);
+		
+		btnSalir = new JButton("Salir");
+		btnSalir.setBounds(279, 409, 97, 25);
+		btnSalir.setActionCommand("Salir");
+		btnSalir.addActionListener(this);
+		getContentPane().add(btnSalir);
+		this.setSize(667, 486);
 		
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		GestorDatos ges = new GestorDatos();
-		if(modo == false){
-			stats = ges.mapaAciertos();
-			modo = true;
-			btnOrden.setText("Ranking de victorias");
-			btnOrden.repaint();
-			this.getContentPane().revalidate();
+		if(arg0.getActionCommand().equals("Ranking")){
+			GestorDatos ges = new GestorDatos();
+			if(modo == false){
+				stats = ges.mapaAciertos();
+				modo = true;
+				btnOrden.setText("Ranking de victorias");
+				btnOrden.repaint();
+				this.getContentPane().revalidate();
+			} else{
+				stats = ges.mapaVictorias();
+				modo = false;
+				btnOrden.setText("Ranking de aciertos");
+				btnOrden.repaint();
+				this.getContentPane().revalidate();
+			}
+			TablaEstadisticasMdl model = new TablaEstadisticasMdl(stats);
+			table=new JTable(model.data,model.columnNames);
+			table.setFillsViewportHeight(true);
+			table.setEnabled(true);
+			table.setRowSelectionAllowed(false);
+			model.fireTableDataChanged();
+			JScrollPane scrl=new JScrollPane(table);
+			scrl.setBounds(20, 11, 624, 351);
+			table.setVisible(true);
+			getContentPane().add(scrl);
 		} else{
-			stats = ges.mapaVictorias();
-			modo = false;
-			btnOrden.setText("Ranking de aciertos");
-			btnOrden.repaint();
-			this.getContentPane().revalidate();
+			this.dispose();
+			MenuPrincipal frm = new MenuPrincipal();
+			frm.setVisible(true);
 		}
-		TablaEstadisticasMdl model = new TablaEstadisticasMdl(stats);
-		table=new JTable(model.data,model.columnNames);
-		table.setFillsViewportHeight(true);
-		table.setEnabled(true);
-		table.setRowSelectionAllowed(false);
-		model.fireTableDataChanged();
-		JScrollPane scrl=new JScrollPane(table);
-		scrl.setBounds(20, 11, 624, 351);
-		table.setVisible(true);
-		getContentPane().add(scrl);
 	}
 	class TablaEstadisticasMdl extends AbstractTableModel{
 

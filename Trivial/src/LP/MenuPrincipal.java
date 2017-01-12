@@ -37,7 +37,8 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 	private JButton btnEstadsticas;
 	
 	public MenuPrincipal(){
-		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+		setTitle("Deusto Trivial");
+		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		pBackground = new BackgroundPanel();
 		pBackground.setBackground(imagePath);
 		getContentPane().add( pBackground , BorderLayout.CENTER );
@@ -67,7 +68,7 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		btnEstadsticas.setActionCommand(comando_VE);
 		btnEstadsticas.addActionListener(this);
 		pBackground.add(btnEstadsticas);
-		
+		this.setResizable(false);
 		setSize( 800, 500 );
 		
 	}

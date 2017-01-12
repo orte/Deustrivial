@@ -30,8 +30,8 @@ public class FrameNuevoJugador extends JFrame implements ActionListener, Documen
 	
 	private GestorDatos gesDat = new GestorDatos();
 
-	public FrameNuevoJugador() 
-	{
+	public FrameNuevoJugador() {
+		setTitle("Nuevo Jugador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -59,7 +59,8 @@ public class FrameNuevoJugador extends JFrame implements ActionListener, Documen
 		btnNewButton.addActionListener(this);
 		btnNewButton.setEnabled(false);
 		contentPane.add(btnNewButton);		
-		
+		this.setResizable(false);
+
 	}
 	
 	

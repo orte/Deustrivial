@@ -67,7 +67,8 @@ public class InternalFrmPregunta extends JInternalFrame implements ActionListene
 		
 		btnNewButton = new JButton("New button");
 		listaBotones[3] = btnNewButton;
-		
+		this.setResizable(false);
+
 		
 		for(int i = 0; i<listaBotones.length; i++){
 			listaBotones[i].setText(preg.getRespuestas().get(i));

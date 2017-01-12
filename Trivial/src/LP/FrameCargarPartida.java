@@ -25,6 +25,7 @@ public class FrameCargarPartida extends JFrame implements ActionListener{
 	private JList<Partida> list;
 	private JButton btnCargar;
 	private GestorDatos ges = new GestorDatos();
+	private JButton btnCancelar;
 
 	
 	public FrameCargarPartida() {
@@ -35,6 +36,7 @@ public class FrameCargarPartida extends JFrame implements ActionListener{
 		} else{
 			
 		}
+		setTitle("Cargar partida");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 571, 511);
 		contentPane = new JPanel();
@@ -44,7 +46,7 @@ public class FrameCargarPartida extends JFrame implements ActionListener{
 		
 		ListaPartidasMdl model = new ListaPartidasMdl(ges.listaPartidas());
 		list = new JList<Partida>(model);
-		list.setBounds(12, 50, 529, 315);
+		list.setBounds(12, 50, 541, 315);
 		list.addListSelectionListener(new ListSelectionListener(){
 			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
@@ -56,11 +58,19 @@ public class FrameCargarPartida extends JFrame implements ActionListener{
 		contentPane.add(list);
 		
 		btnCargar = new JButton("Cargar");
-		btnCargar.setBounds(223, 405, 97, 25);
+		btnCargar.setBounds(131, 403, 97, 25);
 		btnCargar.setActionCommand("Cargar");
 		btnCargar.setEnabled(false);
 		btnCargar.addActionListener(this);
 		contentPane.add(btnCargar);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(318, 403, 97, 25);
+		btnCancelar.setActionCommand("Cancelar");
+		btnCancelar.addActionListener(this);
+		contentPane.add(btnCancelar);
+		this.setResizable(false);
+
 		
 	}
 	@Override
@@ -71,6 +81,10 @@ public class FrameCargarPartida extends JFrame implements ActionListener{
 			FrameTablero tablero = new FrameTablero(cargada);
 			tablero.setVisible(true);
 			this.dispose();
+		} else{
+			this.dispose();
+			MenuPrincipal frm = new MenuPrincipal();
+			frm.setVisible(true);
 		}
 	}
 }

@@ -211,7 +211,6 @@ public class GestorDatos {
 			} else{
 				correcta = 0;
 			}
-			System.out.println(fecha);
 			String sentencia = "INSERT INTO respuestas (id_jugador, id_pregunta, fecha, correcta)"
 					+ " VALUES ("+id_jug+", "+id_pregunta+", \""+fecha+"\", "+correcta+")";
 			datos.guardarDatos(sentencia);

@@ -58,8 +58,9 @@ private static final long serialVersionUID = 1L;
 	private Pregunta preg;
 	
 	public FrameTablero(Partida partida) {
+		setTitle("Deusto Trivial");
 		respuestas = new ArrayList<Respuesta>();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1583, 883);
 		jug1 = gesDat.obtenerJugador(partida.getId_j1()).getNombre_usuario();
 		jug2 = gesDat.obtenerJugador(partida.getId_j2()).getNombre_usuario();
@@ -79,7 +80,8 @@ private static final long serialVersionUID = 1L;
 		btnGuardar.addActionListener(this);
 		btnGuardar.setBounds(340, 50, 120, 30);
 		contentPane.add(btnGuardar);
-		
+		this.setResizable(false);
+
 		CargarDatos();
 		CreateAndShow();	
 	}

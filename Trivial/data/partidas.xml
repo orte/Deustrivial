@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Partidas>
-  <partida fecha="2017-01-07-17-07-56">
-    <id_jug1>1006</id_jug1>
-    <id_jug2>1001</id_jug2>
-    <posx_jug1>1</posx_jug1>
-    <posy_jug1>2</posy_jug1>
-    <posx_jug2>0</posx_jug2>
-    <posy_jug2>0</posy_jug2>
-    <puntJug1>2</puntJug1>
-    <puntJug2>0</puntJug2>
-    <dado>4</dado>
-    <turno>1</turno>
-  </partida>
+  
 </Partidas>
